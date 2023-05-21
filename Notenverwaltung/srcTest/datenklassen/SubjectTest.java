@@ -31,5 +31,11 @@ class SubjectTest {
 		s.setId(9);
 		assertEquals(9, s.getId());
 	}
+	
+	@Test
+	void average() {
+		s.setAverage(1.0);
+		assertEquals(1.0, s.getAverage());
+	}
 
 }

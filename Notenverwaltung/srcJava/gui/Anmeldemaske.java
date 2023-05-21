@@ -10,9 +10,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Font;
-import javax.swing.AbstractAction;
-import java.awt.event.ActionEvent;
-import javax.swing.Action;
+
 
 public class Anmeldemaske extends JFrame {
 
@@ -69,7 +67,6 @@ public class Anmeldemaske extends JFrame {
 		textField.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Login");
-		btnNewButton.setAction(action);
 		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		btnNewButton.setBounds(400, 330, 100, 20);
 		contentPane.add(btnNewButton);

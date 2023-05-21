@@ -39,4 +39,9 @@ class StudentTest {
 		assertEquals(1.0, s.getAverage());
 	}
 
+	@Test
+	void abitur() {
+		s.setAbitur(true);
+		assertEquals(true, s.isAbitur());
+	}
 }
