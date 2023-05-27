@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.EventQueue;
+import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -14,6 +15,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class Student extends JFrame {
 
@@ -53,15 +55,17 @@ public class Student extends JFrame {
 		contentPane.setLayout(null);
 		
 		//Adding Textfields
-		int n = 1, q = 0, startpos = 100;
+		int n = 1, q = 0, startposx = 225, startposy = 100;
 		String fields[] = {"NR", "Subject", "Average", "Del", "Edi"};
 		String text;
 		for(int x = 0; x < 3; x++) {
 			text = fields[x];
 			for(int y = 0; y < 13; y++) {
 			textField = new JTextField(text);
+			textField.setFont(new Font("Arial", Font.PLAIN, 11));
+	        textField.setHorizontalAlignment(SwingConstants.CENTER);
 			textField.setEditable(false);
-			textField.setBounds(startpos + 25*x*n - q, startpos + 25*y, 25*n, 25);
+			textField.setBounds(startposx + 25*x*n - q, startposy + 25*y, 25*n, 25);
 			contentPane.add(textField);
 			textField.setColumns(10);
 			subjectView.add(textField);
@@ -72,8 +76,10 @@ public class Student extends JFrame {
 		}
 		for (int i = 3; i < 5; i++) {
 			textField = new JTextField(fields[i]);
+			textField.setFont(new Font("Arial", Font.PLAIN, 11));
+	        textField.setHorizontalAlignment(SwingConstants.CENTER);
 			textField.setEditable(false);
-			textField.setBounds(startpos + 25*i*n - q, startpos, 25, 25);
+			textField.setBounds(startposx + 25*i*n - q, startposy, 25, 25);
 			contentPane.add(textField);
 			textField.setColumns(10);
 			subjectView.add(textField);
@@ -85,12 +91,13 @@ public class Student extends JFrame {
 		for(int x = 0; x < 2; x++) {
 			for(int y = 0; y < 12; y++) {
 				button = new JButton(icon);
-				button.setBounds(startpos + 275 + 25*x, startpos + 25 + 25*y, 25, 25);
+				button.setBounds(startposx + 275 + 25*x, startposy + 25 + 25*y, 25, 25);
 				contentPane.add(button);
 				subjectButtons.add(button);
 			}
 			icon = new ImageIcon("Icons/icons8-edit-24.png");
 		}
+		subjectView.get(3).setText("");
 		
 	}
 }
