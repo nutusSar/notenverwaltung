@@ -7,12 +7,12 @@ import java.util.HashMap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class StudentSubjectsTest {
-	private StudentSubjects s;
+class StudentSubjectTest {
+	private StudentSubject s;
 
 	@BeforeEach
 	void init() throws Exception {
-		s = new StudentSubjects();
+		s = new StudentSubject();
 	}
 
 	@Test

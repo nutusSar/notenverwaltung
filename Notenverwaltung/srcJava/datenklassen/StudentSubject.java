@@ -5,7 +5,7 @@ import java.util.Map;
 
 
 
-public class StudentSubjects {
+public class StudentSubject {
 	private HashMap<String, String[]> student2Subjects;
 	private HashMap<String, String[]> subject2Students;
 	private HashMap<String, double[]> stSb2Grades;
