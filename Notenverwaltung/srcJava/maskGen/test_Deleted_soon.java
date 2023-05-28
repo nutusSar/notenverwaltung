@@ -1,6 +1,7 @@
 package maskGen;
 
 import java.awt.EventQueue;
+import java.util.HashMap;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 public class test_Deleted_soon extends JFrame {
 
 	private JPanel contentPane;
+	private HashMap<String, JTextField> subjectView = new HashMap<>();
 
 	/**
 	 * Launch the application.
@@ -39,6 +41,10 @@ public class test_Deleted_soon extends JFrame {
 		mask.maskgen(true);
 		setContentPane(mask.getContentPane());
 		contentPane.setLayout(null);
+		subjectView = mask.getSubjectView();
+		subjectView.get("00").setText("NR");
+		subjectView.get("10").setText("Grade");
+		subjectView.get("20").setText("Weight");
 
 		
 	}

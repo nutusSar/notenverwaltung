@@ -129,7 +129,7 @@ public class MaskGenerator {
 		//Adding PageButtons
 		if (pageButtons) {
 			button = new JButton(new ImageIcon("Icons/icons8-previous-page-page-24.png"));
-			button.setBounds(600, 425, 25, 25);
+			button.setBounds(500, 450, 25, 25);
 			button.addActionListener(new ActionListener() {
 	            @Override
 	            public void actionPerformed(ActionEvent e) {
@@ -139,7 +139,7 @@ public class MaskGenerator {
 			contentPane.add(button);
 			this.pageButtons[0] = button;
 			button = new JButton(new ImageIcon("Icons/icons8-next-page-24.png"));
-			button.setBounds(625, 425, 25, 25);
+			button.setBounds(525, 450, 25, 25);
 			button.addActionListener(new ActionListener() {
 	            @Override
 	            public void actionPerformed(ActionEvent e) {
