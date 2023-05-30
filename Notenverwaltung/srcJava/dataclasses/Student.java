@@ -1,10 +1,10 @@
-package datenklassen;
+package dataclasses;
 
-public class Class {
+public class Student {
 	private String name;
 	private int id;
-	private Student[] students;
 	private double average;
+	private boolean abitur;
 	
 	public String getName() {
 		return name;
@@ -18,19 +18,16 @@ public class Class {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Student[] getStudents() {
-		return students;
-	}
-	public void setStudents(Student[] students) {
-		this.students = students;
-	}
 	public double getAverage() {
 		return average;
 	}
 	public void setAverage(double average) {
 		this.average = average;
 	}
-	
-	
-
+	public boolean isAbitur() {
+		return abitur;
+	}
+	public void setAbitur(boolean abitur) {
+		this.abitur = abitur;
+	}
 }

@@ -7,6 +7,8 @@ import java.util.HashMap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import dataclasses.StudentSubject;
+
 class StudentSubjectTest {
 	private StudentSubject s;
 

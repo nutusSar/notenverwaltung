@@ -13,8 +13,12 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import dataclasses.Components;
+import logic.DeleteButton;
+import logic.EditButton;
+
 public class MaskGenerator {
-	
+	private Components components;
 	private JPanel contentPane;
 	private JTextField textField;
 	private JButton button;
@@ -23,41 +27,18 @@ public class MaskGenerator {
 	private JTextField[] hiddenTextfields = new JTextField[13];
 	private JButton[] pageButtons = new JButton[3];
 	
-	public JPanel getContentPane() {
-		return contentPane;
-	}
-	public void setContentPane(JPanel contentPane) {
-		this.contentPane = contentPane;
-	}
-	public HashMap<String, JTextField> getSubjectView() {
-		return subjectView;
-	}
-	public void setSubjectView(HashMap<String, JTextField> subjectView) {
-		this.subjectView = subjectView;
-	}
-	public HashMap<String, JButton> getSubjectButtons() {
-		return subjectButtons;
-	}
-	public void setSubjectButtons(HashMap<String, JButton> subjectButtons) {
-		this.subjectButtons = subjectButtons;
-		}
-	public JTextField[] getHiddenTextfields() {
-		return hiddenTextfields;
-	}
-	public void setHiddenTextfields(JTextField[] hiddenTextfields) {
-		this.hiddenTextfields = hiddenTextfields;
-	}
-	public JButton[] getPageButtons() {
-		return pageButtons;
-	}
-	public void setPageButtons(JButton[] pageButtons) {
-		this.pageButtons = pageButtons;
-	}
 	
-	public void maskgen(boolean pageButtons) { 
+	public Components getComponents() {
+		return components;
+	}
+	public void setComponents(Components components) {
+		this.components = components;
+	}
+
+
+	public MaskGenerator(boolean pageButtons) { 
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		//Style Settings
 		Font font = new Font("Arial", Font.PLAIN, 11);
@@ -112,14 +93,22 @@ public class MaskGenerator {
 				final String yKey = String.valueOf(y + 1);
 				button = new JButton(icon);
 				button.setBounds(startposx + 275 + 25*x, startposy + 25 + 25*y, 25, 25);
-				button.addActionListener(new ActionListener() {
-		            @Override
-		            public void actionPerformed(ActionEvent e) {
-		                //Return(int row, boolean edit)
-		            	String text = hiddenTextfields[index].getText();
-		            	subjectView.get("1" + yKey).setText(text);
-		            }
-		        });
+				if (x == 0) {
+					button.addActionListener(new ActionListener() {
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							DeleteButton.logic("1" + yKey, components);
+						}
+					});
+				}
+				else {
+					button.addActionListener(new ActionListener() {
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							EditButton.logic("1" + yKey, components);
+						}
+					});
+				}
 				contentPane.add(button);
 				subjectButtons.put(String.valueOf(x) + String.valueOf(y), button);
 			}
@@ -151,7 +140,7 @@ public class MaskGenerator {
 			this.pageButtons[1] = button;
 
 		}
-		
+		components = new Components(contentPane, subjectView, subjectButtons, hiddenTextfields, this.pageButtons);
 	
 	}
 

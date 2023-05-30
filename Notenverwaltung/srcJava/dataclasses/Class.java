@@ -1,8 +1,9 @@
-package datenklassen;
+package dataclasses;
 
-public class Subject {
+public class Class {
 	private String name;
 	private int id;
+	private Student[] students;
 	private double average;
 	
 	public String getName() {
@@ -17,11 +18,19 @@ public class Subject {
 	public void setId(int id) {
 		this.id = id;
 	}
+	public Student[] getStudents() {
+		return students;
+	}
+	public void setStudents(Student[] students) {
+		this.students = students;
+	}
 	public double getAverage() {
 		return average;
 	}
 	public void setAverage(double average) {
 		this.average = average;
 	}
+	
+	
 
 }

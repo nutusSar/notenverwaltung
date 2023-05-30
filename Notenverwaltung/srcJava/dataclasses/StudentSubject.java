@@ -1,4 +1,4 @@
-package datenklassen;
+package dataclasses;
 
 import java.util.HashMap;
 import java.util.Map;
