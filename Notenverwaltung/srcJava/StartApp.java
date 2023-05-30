@@ -18,7 +18,6 @@ public class StartApp extends JFrame{
 		
 		MaskGenerator mask = new MaskGenerator(true);
 		components = mask.getComponents();
-		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
