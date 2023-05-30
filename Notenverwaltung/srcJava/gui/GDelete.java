@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,6 +21,7 @@ public class GDelete {
 	private JLabel label;
 	private JTextField textField;
 	private Font font = new Font("Arial", Font.PLAIN, 11);
+	private JLabel labelInput;
 	
 	public GDelete(Components components, String cell) {
 		JFrame frame = new JFrame() {
@@ -42,8 +44,13 @@ public class GDelete {
 		okButton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					 if (DeleteOk.logic(components, cell)) {
+					String entry = textField.getText();
+					 if (DeleteOk.logic(components, cell, entry)) {
 						 frame.dispose();
+					 }
+					 else {
+						 labelInput.setText("Your input doesnt match.");
+						 textField.requestFocusInWindow();
 					 }
 				}
 			});
@@ -60,8 +67,13 @@ public class GDelete {
 		label.setFont(font);
 		label.setBounds(40, 90, 300, 28);
 		frame.getContentPane().add(label);
-
 		
+		labelInput = new JLabel();
+		labelInput.setFont(font);
+		labelInput.setForeground(Color.RED);
+		labelInput.setBounds(40, 130, 300, 14);
+		frame.getContentPane().add(labelInput);
+
 	
 	}
 }
