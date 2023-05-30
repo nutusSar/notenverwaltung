@@ -39,6 +39,11 @@ public class StartApp extends JFrame{
 
 		setContentPane(components.getContentPane());
 		contentPane.setLayout(null);
+		setJMenuBar(components.getMenuBar());
+		components.getSubjectView().get("00").setText("NR");
+		components.getSubjectView().get("10").setText("Subject");
+		components.getSubjectView().get("20").setText("Average");
+
 		}
 
 }
