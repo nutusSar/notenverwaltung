@@ -100,8 +100,13 @@ public class DataMapper {
 		return(student.getName() + ";" + student.getAverage() + ";"+ student.getId()) + ";";
 	}
 	
-	public static String StudentsInClass(String name) {
-		return(null);
+	public static String StudentsInClass(String id) {
+		if (!model.getClasses().containsKey(id)) {
+			return(null);
+		}
+		ArrayList<Student> students = model.getClasses().get(id).getStudents();
+		Collections.sort(students);
+		
 	}
 	
 	public static String allStudents() {
