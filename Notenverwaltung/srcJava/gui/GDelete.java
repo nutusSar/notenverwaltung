@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 
 import dataclasses.Components;
 import logic.DeleteButton;
-import logic.DeleteOk;
+import logic.EnableDisable;
 
 
 public class GDelete {
@@ -27,9 +27,7 @@ public class GDelete {
 		JFrame frame = new JFrame() {
 			 @Override
 	            public void dispose() {
-				 	for(JButton button : components.getButtons()) {
-				 		button.setEnabled(true);
-				 	}
+				 	EnableDisable.enable(components);
 	                super.dispose();
 	            }
 		};
@@ -45,7 +43,7 @@ public class GDelete {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					String entry = textField.getText();
-					 if (DeleteOk.logic(components, cell, entry)) {
+					 if (DeleteButton.clickOk(components, cell, entry)) {
 						 frame.dispose();
 					 }
 					 else {
@@ -61,7 +59,7 @@ public class GDelete {
 		textField.setBounds(40, 147, 300, 20);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
-		String deleteMessage = "Warning! You are about to delete a " + components.getSubjectView().get("10").getText() + ". If you are sure, \nplease enter: \" IWantToDelete_" + components.getSubjectView().get(cell).getText() +"\"";
+		String deleteMessage = "Warning! You are about to delete a " + components.getVisibleTextfields().get("10").getText() + ". If you are sure, \nplease enter: \" IWantToDelete_" + components.getVisibleTextfields().get(cell).getText() +"\"";
 		deleteMessage = "<html>" + deleteMessage.replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br/>").replace("\"", "<i>").replace("\"", "</i>") + "</html>";
 		label = new JLabel(deleteMessage);
 		label.setFont(font);

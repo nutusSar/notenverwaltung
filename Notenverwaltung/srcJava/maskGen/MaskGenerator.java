@@ -31,9 +31,11 @@ public class MaskGenerator {
 	private HashMap<String, JTextField> visibleTextfields = new HashMap<>();
 	private HashMap<String, JButton> rowButtons = new HashMap<>();
 	private HashMap<String, JTextField> hiddenTextfields = new HashMap<>();
+	private JTextField searchField;
 	private JButton[] pageButtons = new JButton[3];
 	private JMenuBar menuBar;
 	private ArrayList<JButton> buttons = new ArrayList<JButton>();
+	private JButton okButton;
 	
 	public Components getComponents() {
 		return components;
@@ -92,6 +94,9 @@ public class MaskGenerator {
 			hiddenTextfields.put("1" + String.valueOf(y), textField);
 		}
 		
+		//Adding SearchField
+		
+		
 		//Adding Buttons
 		Icon icon = new ImageIcon("Icons/icons8-trash-24.png");
 		for(int x = 0; x < 2; x++) {
@@ -104,7 +109,7 @@ public class MaskGenerator {
 					button.addActionListener(new ActionListener() {
 						@Override
 						public void actionPerformed(ActionEvent e) {
-							DeleteButton.logic("1" + yKey, components);
+							DeleteButton.clickDelete("1" + yKey, components);
 						}
 					});
 				}
@@ -154,7 +159,7 @@ public class MaskGenerator {
 
 		
 		//Adding a MenuBar
-		JMenuBar menuBar = new JMenuBar();
+		menuBar = new JMenuBar();
 		// Create some menus and menu items
 		JMenu fileMenu = new JMenu("File");
 	    JMenuItem newMenuItem = new JMenuItem("New");
@@ -173,7 +178,7 @@ public class MaskGenerator {
 	    ClassMenuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				CreateClass.logic(components);
+				CreateClass.clickCreate(components);
 			}
 		});
         create.add(ClassMenuItem);
@@ -183,7 +188,7 @@ public class MaskGenerator {
         menuBar.add(create);
         
         //Putting all information into a DTO
-		components = new Components(contentPane, visibleTextfields, rowButtons, hiddenTextfields, this.pageButtons, buttons, menuBar);
+		components = new Components(contentPane, visibleTextfields, rowButtons, hiddenTextfields, searchField, this.pageButtons, buttons, menuBar, okButton);
 	
 	}
 

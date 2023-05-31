@@ -6,16 +6,16 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import dataclasses.Class;
+import dataclasses.SClass;
 import dataclasses.Student;
 
 class ClassTest {
 	
-	private Class c;
+	private SClass c;
 
 	@BeforeEach
 	void init() {
-		c = new Class();
+		c = new SClass();
 	}
 
 	@Test

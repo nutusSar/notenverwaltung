@@ -1,15 +1,19 @@
 package logic;
-import javax.swing.JButton;
 
 import dataclasses.Components;
 import gui.GCreateClass;
 
 public class CreateClass {
 
-	public static void logic(Components components) {
-		for (JButton button: components.getButtons()) {
-			button.setEnabled(false);
-		}
+	public static void clickCreate(Components components) {
+		EnableDisable.disable(components);
 		new GCreateClass(components);
+	}
+	
+	public static boolean clickOk(String input) {
+		if (input.isEmpty()) {
+			return(false);
+		}
+		return(DataMapper.createClass(input));
 	}
 }
