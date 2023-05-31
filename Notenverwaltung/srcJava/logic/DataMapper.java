@@ -56,6 +56,9 @@ public class DataMapper {
 			search = "sc";
 			index = 0;
 		}
+		if (index < 0) {
+			index = 0;
+		}
 		ArrayList<String> keys = new ArrayList<>();
 		keys.addAll(model.getClasses().keySet());
 		Collections.sort(keys);
@@ -63,7 +66,7 @@ public class DataMapper {
 			return(null);
 		}
 		String result = "";
-		for (int i = index; i < keys.size(); i++) {
+		for (int i = index, ii = 0; i < keys.size() && ii < 12; i++, ii++) {
 			result += String.valueOf(i + 1) + ";" + searchClass(keys.get(i));
 		}
 		return result;

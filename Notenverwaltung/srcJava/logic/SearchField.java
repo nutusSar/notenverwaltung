@@ -6,7 +6,10 @@ import dataclasses.Components;
 
 public class SearchField {
 
-	public static void clickOk(Components components, String input) {
+	public static void clickOk(Components components, String input, boolean reset) {
+		if (reset) {
+			DataMapper.setIndex(0);
+		}
 		int i = 0;
 		for (JTextField textField : components.getVisibleTextfields().values()) {
 			textField.setText("");

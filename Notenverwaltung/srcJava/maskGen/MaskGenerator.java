@@ -22,6 +22,7 @@ import dataclasses.Components;
 import logic.CreateClass;
 import logic.DeleteButton;
 import logic.EditButton;
+import logic.PageButtons;
 import logic.SearchField;
 
 public class MaskGenerator {
@@ -139,7 +140,7 @@ public class MaskGenerator {
 			button.addActionListener(new ActionListener() {
 	            @Override
 	            public void actionPerformed(ActionEvent e) {
-	                
+	                PageButtons.previous(components);
 	            }
 	        });
 			button.setVisible(pageButtons);
@@ -152,7 +153,7 @@ public class MaskGenerator {
 			button.addActionListener(new ActionListener() {
 	            @Override
 	            public void actionPerformed(ActionEvent e) {
-	                //Return
+	                PageButtons.next(components);
 	            	
 	            }
 	        });
@@ -167,7 +168,7 @@ public class MaskGenerator {
 			okButton.addActionListener(new ActionListener() {
 	            @Override
 	            public void actionPerformed(ActionEvent e) {
-	            	SearchField.clickOk(components, searchField.getText());	   
+	            	SearchField.clickOk(components, searchField.getText(), true);	   
 	            	searchField.requestFocusInWindow();
 	            }
 	        });
