@@ -1,9 +1,11 @@
 package dataclasses;
 
+import java.util.ArrayList;
+
 public class SClass {
 	private String name;
 	private String id;
-	private Student[] students;
+	private ArrayList<Student> students = new ArrayList<Student>();
 	private double average;
 	
 	public String getName() {
@@ -18,10 +20,10 @@ public class SClass {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public Student[] getStudents() {
+	public ArrayList<Student> getStudents() {
 		return students;
 	}
-	public void setStudents(Student[] students) {
+	public void setStudents(ArrayList<Student> students) {
 		this.students = students;
 	}
 	public double getAverage() {

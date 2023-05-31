@@ -2,6 +2,8 @@ package logic;
 
 import dataclasses.Model;
 import dataclasses.SClass;
+import dataclasses.Student;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -70,5 +72,27 @@ public class DataMapper {
 			result += String.valueOf(i + 1) + ";" + searchClass(keys.get(i));
 		}
 		return result;
+	}
+	
+	public static int createStudent(String inputSt, String inputCl) {
+		String id = IDGenerater.idClass(inputCl);
+		if (!model.getClasses().containsKey(id)) {
+			return(2);
+		}
+		SClass sclass = model.getClasses().get(id);
+		ArrayList<Student> students = sclass.getStudents();
+		if (!students.isEmpty()) {
+			for (Student student : students) {
+				if (student.getName().equals(inputSt)) {
+					return(1);
+				}
+			}
+		}
+		Student newStudent = new Student();
+		newStudent.setName(inputSt);
+		//ID needs to be implemnted
+		newStudent.setId(0);
+		sclass.getStudents().add(newStudent);
+		return 0;
 	}
 }

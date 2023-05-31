@@ -20,6 +20,7 @@ import javax.swing.border.EmptyBorder;
 
 import dataclasses.Components;
 import logic.CreateClass;
+import logic.CreateStudent;
 import logic.DeleteButton;
 import logic.EditButton;
 import logic.PageButtons;
@@ -197,6 +198,12 @@ public class MaskGenerator {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				CreateClass.clickCreate(components);
+			}
+		});
+	    StudentMenuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				CreateStudent.clickCreate(components);
 			}
 		});
         create.add(ClassMenuItem);
