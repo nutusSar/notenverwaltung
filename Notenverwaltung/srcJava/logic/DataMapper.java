@@ -74,25 +74,55 @@ public class DataMapper {
 		return result;
 	}
 	
+	
 	public static int createStudent(String inputSt, String inputCl) {
 		String id = IDGenerater.idClass(inputCl);
 		if (!model.getClasses().containsKey(id)) {
 			return(2);
 		}
-		SClass sclass = model.getClasses().get(id);
-		ArrayList<Student> students = sclass.getStudents();
-		if (!students.isEmpty()) {
-			for (Student student : students) {
-				if (student.getName().equals(inputSt)) {
-					return(1);
-				}
-			}
+		if (model.getStudents().containsKey(id)) {
+			return(1);
 		}
 		Student newStudent = new Student();
 		newStudent.setName(inputSt);
-		//ID needs to be implemnted
-		newStudent.setId(0);
-		sclass.getStudents().add(newStudent);
+		String stID = IDGenerater.idStudent(inputSt);
+		newStudent.setId(stID);
+		model.getClasses().get(id).getStudents().add(newStudent);
+		model.getStudents().put(stID, newStudent);
 		return 0;
 	}
+	
+	public static String searchStudent(String id) {
+		if (!model.getStudents().containsKey(id)) {
+			return(null);
+		}
+		Student student = model.getStudents().get(id);
+		return(student.getName() + ";" + student.getAverage() + ";"+ student.getId()) + ";";
+	}
+	
+	public static String StudentsInClass(String name) {
+		return(null);
+	}
+	
+	public static String allStudents() {
+		if (!search.equals("st")) {
+			search = "st";
+			index = 0;
+		}
+		if (index < 0) {
+			index = 0;
+		}
+		ArrayList<String> keys = new ArrayList<>();
+		keys.addAll(model.getStudents().keySet());
+		Collections.sort(keys);
+		if (index > keys.size()) {
+			return(null);
+		}
+		String result = "";
+		for (int i = index, ii = 0; i < keys.size() && ii < 12; i++, ii++) {
+			result += String.valueOf(i + 1) + ";" + searchStudent(keys.get(i));
+		}
+		return result;
+	}
+	
 }

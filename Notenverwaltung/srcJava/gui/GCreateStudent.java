@@ -49,7 +49,7 @@ public class GCreateStudent {
 							frame.dispose();
 							break;
 						case 1:
-							labelInputSt.setText("This name isnt available in this class.");
+							labelInputSt.setText("This name already exists.");
 							labelInputCl.setText("");
 							textFieldSt.requestFocusInWindow();
 							break;
