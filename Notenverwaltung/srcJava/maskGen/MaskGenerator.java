@@ -167,7 +167,8 @@ public class MaskGenerator {
 			okButton.addActionListener(new ActionListener() {
 	            @Override
 	            public void actionPerformed(ActionEvent e) {
-	            	SearchField.clickOk(components, searchField.getText());	            	
+	            	SearchField.clickOk(components, searchField.getText());	   
+	            	searchField.requestFocusInWindow();
 	            }
 	        });
 			okButton.setVisible(pageButtons);

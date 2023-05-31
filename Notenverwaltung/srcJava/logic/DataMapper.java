@@ -48,7 +48,7 @@ public class DataMapper {
 			return(null);
 		}
 		SClass sclass = model.getClasses().get(id);
-		return(sclass.getName() + ";"+ sclass.getAverage() + ";"+ sclass.getId());
+		return(sclass.getName() + ";" + sclass.getAverage() + ";"+ sclass.getId()) + ";";
 	}
 	
 	public static String allClasses() {
@@ -59,6 +59,13 @@ public class DataMapper {
 		ArrayList<String> keys = new ArrayList<>();
 		keys.addAll(model.getClasses().keySet());
 		Collections.sort(keys);
-		return null;
+		if (index > keys.size()) {
+			return(null);
+		}
+		String result = "";
+		for (int i = index; i < keys.size(); i++) {
+			result += String.valueOf(i + 1) + ";" + searchClass(keys.get(i));
+		}
+		return result;
 	}
 }

@@ -17,12 +17,22 @@ public class SearchField {
 		components.getVisibleTextfields().get("30").setText("Del");
 		components.getVisibleTextfields().get("40").setText("Edi");
 		
-		if (input.matches("([Ss])([Cc])([\\w\\s]*)")) {
+		if (input.matches("([Ss])([Cc])(.*)")) {
 			components.getVisibleTextfields().get("00").setText("NR");
 			components.getVisibleTextfields().get("10").setText("Class");
 			components.getVisibleTextfields().get("20").setText("Average");
 			if (input.matches("([Ss][Cc])")) {
 				String result = DataMapper.allClasses();
+				if (result == null) {
+					return;
+				}
+				String[] cells = result.split(";");
+				for (int y = 0; y < (cells.length) / 4; y++) {
+					for (int x = 0; x < 3; x++) {
+						components.getVisibleTextfields().get(String.valueOf(x) + String.valueOf(y + 1)).setText(cells[y * 4 + x]);
+					}
+					components.getHiddenTextfields().get("1" + String.valueOf(y +1)).setText(cells[((y+1)*4) -1]);
+				}
 			}
 			else{
 				String result = DataMapper.searchClass(input.toUpperCase());
