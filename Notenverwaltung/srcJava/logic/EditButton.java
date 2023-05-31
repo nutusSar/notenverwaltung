@@ -5,8 +5,8 @@ public class EditButton {
 	
 	
 	public static void logic(String cell, Components components) {
-		components.getHiddenTextfields().get(cell).setText(cell);
-		components.getVisibleTextfields().get(cell).setText(cell);
+		String text = components.getHiddenTextfields().get(cell).getText();
+		components.getVisibleTextfields().get(cell).setText(text);
 	}
 
 }

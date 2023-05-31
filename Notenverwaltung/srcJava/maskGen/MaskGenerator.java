@@ -22,6 +22,7 @@ import dataclasses.Components;
 import logic.CreateClass;
 import logic.DeleteButton;
 import logic.EditButton;
+import logic.SearchField;
 
 public class MaskGenerator {
 	private Components components;
@@ -95,7 +96,10 @@ public class MaskGenerator {
 		}
 		
 		//Adding SearchField
-		
+		searchField = new JTextField();
+		searchField.setBounds(25, 25, 125, 25);
+		contentPane.add(searchField);
+		searchField.setColumns(10);
 		
 		//Adding Buttons
 		Icon icon = new ImageIcon("Icons/icons8-trash-24.png");
@@ -157,7 +161,19 @@ public class MaskGenerator {
 			this.pageButtons[1] = button;
 			buttons.add(button);
 
-		
+		//Adding okButton
+			okButton = new JButton(new ImageIcon("Icons/icons8-search-24.png"));
+			okButton.setBounds(175, 25, 25, 25);
+			okButton.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            	SearchField.clickOk(components, searchField.getText());	            	
+	            }
+	        });
+			okButton.setVisible(pageButtons);
+			contentPane.add(okButton);
+			buttons.add(okButton);
+			
 		//Adding a MenuBar
 		menuBar = new JMenuBar();
 		// Create some menus and menu items
