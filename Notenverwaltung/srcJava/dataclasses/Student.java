@@ -1,6 +1,6 @@
 package dataclasses;
 
-public class Student {
+public class Student implements Comparable<Student>{
 	private String name;
 	private String id;
 	private double average;
@@ -29,5 +29,10 @@ public class Student {
 	}
 	public void setAbitur(boolean abitur) {
 		this.abitur = abitur;
+	}
+	
+	@Override
+	public int compareTo(Student o) {
+		return(this.getId().compareTo(o.getId()));
 	}
 }

@@ -104,8 +104,23 @@ public class DataMapper {
 		if (!model.getClasses().containsKey(id)) {
 			return(null);
 		}
+		if (!search.equals("ic")) {
+			search = "ic";
+			index = 0;
+		}
+		if (index < 0) {
+			index = 0;
+		}
 		ArrayList<Student> students = model.getClasses().get(id).getStudents();
 		Collections.sort(students);
+		if (index > students.size()) {
+			return(null);
+		}
+		String result = "";
+		for (int i = index, ii = 0; i < students.size() && ii < 12; i++, ii++) {
+			result += String.valueOf(i + 1) + ";" + searchStudent(students.get(i).getId());
+		}
+		return result;
 		
 	}
 	
