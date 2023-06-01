@@ -19,6 +19,12 @@ public class EditButton {
 				SearchField.clickOk(components, id, false);
 				return;
 			}
+			if (id.matches("([Ss])([Uu])(.*)") && components.getHiddenTextfields().get("10").getText().isEmpty()) {
+				components.getSearchField().setText("iu" + components.getVisibleTextfields().get(cell).getText());
+				id = "IU" + id.substring(2);
+				SearchField.clickOk(components, id, false);
+				return;
+			}
 		}
 		id = components.getHiddenTextfields().get("10").getText();
 		if (!id.isEmpty()) {
