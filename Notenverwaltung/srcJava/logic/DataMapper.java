@@ -165,6 +165,28 @@ public class DataMapper {
 		return(true);
 	}
 	
+	public static int addSubject(String name, String id) {
+		String sbID = IDGenerater.idSubject(name);
+		if (!model.getSubjects().containsKey(sbID)) {
+			return(1);
+		}
+		if (!model.getStudents().containsKey(id)) {
+			return(2);
+		}
+		if (model.getS2s().getStudent2Subjects().containsKey(id)) {
+			ArrayList<Subject> subjects = model.getS2s().getStudent2Subjects().get(id);
+		}
+		else {
+			ArrayList<Subject> subjects = new ArrayList<Subject>();
+			subjects.add(model.getSubjects().get(sbID));
+			model.getS2s().getStudent2Subjects().put(id, subjects);
+			
+		}
+		model.getS2s().getSubject2Students().put(sbID, null)
+		
+		return(0);
+	}
+	
 	public static String searchSubject(String id) {
 		if (!model.getSubjects().containsKey(id)) {
 			return(null);
@@ -174,7 +196,6 @@ public class DataMapper {
 	}
 	
 	public static String SubjectsInStudent(String id) {
-		//TODO
 		if (!model.getStudents().containsKey(id)) {
 			return(null);
 		}

@@ -24,7 +24,7 @@ public class GAddSubject {
 	private Font font = new Font("Arial", Font.PLAIN, 11);
 	private JLabel labelInput;
 	
-	public GAddSubject(Components components) {
+	public GAddSubject(Components components, String cell) {
 		JFrame frame = new JFrame() {
 			 @Override
 	            public void dispose() {
@@ -43,24 +43,21 @@ public class GAddSubject {
 		okButton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					switch(AddSubject.clickOk(components, null)) {
+					switch(AddSubject.clickOk(components, textField.getText(), components.getHiddenTextfields().get("10").getText())) {
 					case 0:
 						frame.dispose();
 						break;
 					case 1:
-						labelInputSt.setText("This name isnt available.");
-						labelInputCl.setText("");
-						textFieldSt.requestFocusInWindow();
+						labelInput.setText("This Subject doesn't exist.");
+						textField.requestFocusInWindow();
 						break;
 					case 2:
-						labelInputSt.setText("");
-						labelInputCl.setText("This class doesnt exist.");
-						textFieldCl.requestFocusInWindow();
+						labelInput.setText("Subjects can only be added to a Student.");
+						textField.requestFocusInWindow();
 						break;
 					case 3:
-						labelInputSt.setText("This name isnt available.");
-						labelInputCl.setText("This class doesnt exist.");
-						textFieldSt.requestFocusInWindow();
+						labelInput.setText("Subject can't be added.");
+						textField.requestFocusInWindow();
 						break;
 				}
 				}

@@ -13,6 +13,17 @@ public class EditButton {
 				SearchField.clickOk(components, id, false);
 				return;
 			}
+			if (id.matches("([Ss])([Tt])(.*)")) {
+				components.getSearchField().setText("it" + components.getVisibleTextfields().get(cell).getText());
+				id = "IT" + id.substring(2);
+				SearchField.clickOk(components, id, false);
+				return;
+			}
+		}
+		id = components.getHiddenTextfields().get("10").getText();
+		if (!id.isEmpty()) {
+			System.out.println(id);
+			AddSubject.clickEdit(components, cell, id);
 		}
 		components.getVisibleTextfields().get(cell).setText(id);
 	}
