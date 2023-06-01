@@ -13,7 +13,7 @@ public class CreateStudent {
 		if (inputSt.isEmpty() && inputCl.isEmpty()) {
 			return(3);
 		}
-		if (inputSt.isEmpty() || inputSt.contains(";")) {
+		if (inputSt.isEmpty() || inputSt.contains(";") || inputSt.contains("+")) {
 			return(1);
 		}
 		if (inputCl.isEmpty()) {

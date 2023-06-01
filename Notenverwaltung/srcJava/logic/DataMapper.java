@@ -253,7 +253,7 @@ public class DataMapper {
 		}
 		Collections.sort(subjects);
 		if (index > subjects.size()) {
-			return(null);
+			return(id); //modiefied maybe should stay null?
 		}
 		String result = "";
 		for (int i = index, ii = 0; i < subjects.size() && ii < 12; i++, ii++) {
@@ -290,6 +290,7 @@ public class DataMapper {
 	}
 	
 	public static String gradesInSubject(String id) {
+		//TODO needs to be remodeld, two seperate lookups
 		if (!model.getS2s().getStSb2Grades().containsKey(id)) {
 			return(null);
 		}
@@ -305,7 +306,7 @@ public class DataMapper {
 			return(id);
 		}
 		if (index > grades.size()) {
-			return(null);
+			return(id); //modiefied maybe should stay null?
 		}
 		String result = "";
 		for (int i = index, ii = 0; i < grades.size() && ii < 12; i++, ii++) {

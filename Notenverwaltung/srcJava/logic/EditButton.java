@@ -26,7 +26,7 @@ public class EditButton {
 				return;
 			}
 			String stID = components.getHiddenTextfields().get("10").getText();
-			String stsbgrID = stID + ";" + id;
+			String stsbgrID = stID + "+" + id;
 			if (!id.isEmpty()) {
 				components.getSearchField().setText(stsbgrID);
 				SearchField.clickOk(components, stsbgrID, false);

@@ -171,13 +171,13 @@ public class SearchField {
 			}
 		}
 		//GradesInSubject
-		String[] stsbgr = input.split(";");
+		String[] stsbgr = input.split("\\+");
 		if(stsbgr.length > 1) {
 			if (stsbgr[0].matches("([Ss])([Tt])(.*)") && stsbgr[1].matches("([Ss])([Uu])(.*)") ) {
 				components.getVisibleTextfields().get("00").setText("NR");
 				components.getVisibleTextfields().get("10").setText("Weight");
 				components.getVisibleTextfields().get("20").setText("Grade");
-				String result = DataMapper.gradesInSubject(String.join("", stsbgr).toUpperCase());
+				String result = DataMapper.gradesInSubject(String.join("+", stsbgr).toUpperCase());
 				if (result == null) {
 					return;
 				}
