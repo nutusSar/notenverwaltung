@@ -186,6 +186,9 @@ public class DataMapper {
 			index = 0;
 		}
 		ArrayList<Subject> subjects = model.getS2s().getStudent2Subjects().get(id);
+		if (subjects == null) {
+			return(id);
+		}
 		Collections.sort(subjects);
 		if (index > subjects.size()) {
 			return(null);
