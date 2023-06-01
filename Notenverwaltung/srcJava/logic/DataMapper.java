@@ -175,6 +175,16 @@ public class DataMapper {
 		}
 		if (model.getS2s().getStudent2Subjects().containsKey(id)) {
 			ArrayList<Subject> subjects = model.getS2s().getStudent2Subjects().get(id);
+			if (subjects.size() > 11){
+				return(3);
+			}
+			for (Subject subject : subjects) {
+				System.out.println(subject.getId() + " " + sbID);
+				if (subject.getId().equals(sbID)) {
+					return(3);
+				}
+			}
+			subjects.add(model.getSubjects().get(sbID));
 		}
 		else {
 			ArrayList<Subject> subjects = new ArrayList<Subject>();
@@ -182,8 +192,15 @@ public class DataMapper {
 			model.getS2s().getStudent2Subjects().put(id, subjects);
 			
 		}
-		model.getS2s().getSubject2Students().put(sbID, null)
 		
+		if (model.getS2s().getSubject2Students().containsKey(sbID)) {
+			model.getS2s().getSubject2Students().get(sbID).add(model.getStudents().get(id));
+		}
+		else {
+			ArrayList<Student> students = new ArrayList<Student>();
+			students.add(model.getStudents().get(id));
+			model.getS2s().getSubject2Students().put(sbID, students);
+		}
 		return(0);
 	}
 	

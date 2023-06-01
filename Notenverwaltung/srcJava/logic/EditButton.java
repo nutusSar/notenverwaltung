@@ -22,10 +22,9 @@ public class EditButton {
 		}
 		id = components.getHiddenTextfields().get("10").getText();
 		if (!id.isEmpty()) {
-			System.out.println(id);
 			AddSubject.clickEdit(components, cell, id);
 		}
-		components.getVisibleTextfields().get(cell).setText(id);
+		//components.getVisibleTextfields().get(cell).setText(id);
 	}
 
 }

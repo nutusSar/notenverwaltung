@@ -6,7 +6,7 @@ import gui.GAddSubject;
 public class AddSubject {
 	
 	public static void clickEdit(Components components, String cell, String id) {
-		if (!components.getHiddenTextfields().get(cell).getText().isEmpty()) {
+		if (components.getHiddenTextfields().get(cell).getText().isEmpty()) {
 			EnableDisable.disable(components);
 			new GAddSubject(components, cell);
 		}
