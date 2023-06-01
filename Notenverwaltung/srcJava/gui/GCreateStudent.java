@@ -36,7 +36,7 @@ public class GCreateStudent {
 		frame.setBounds(300, 250, 400, 300);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		frame.setTitle("Attention");
+		frame.setTitle("Create Student");
 		frame.setVisible(true);
 		okButton = new JButton("OK");
 		okButton.setFont(font);

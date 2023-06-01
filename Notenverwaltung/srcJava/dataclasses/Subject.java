@@ -1,8 +1,8 @@
 package dataclasses;
 
-public class Subject {
+public class Subject implements Comparable<Subject>{
 	private String name;
-	private int id;
+	private String id;
 	private double average;
 	
 	public String getName() {
@@ -11,10 +11,10 @@ public class Subject {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public double getAverage() {
@@ -22,6 +22,11 @@ public class Subject {
 	}
 	public void setAverage(double average) {
 		this.average = average;
+	}
+	
+	@Override
+	public int compareTo(Subject o) {
+		return(this.getId().compareTo(o.getId()));
 	}
 
 }

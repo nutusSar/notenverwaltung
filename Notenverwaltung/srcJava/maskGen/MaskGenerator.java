@@ -21,6 +21,7 @@ import javax.swing.border.EmptyBorder;
 import dataclasses.Components;
 import logic.CreateClass;
 import logic.CreateStudent;
+import logic.CreateSubject;
 import logic.DeleteButton;
 import logic.EditButton;
 import logic.PageButtons;
@@ -92,7 +93,10 @@ public class MaskGenerator {
 		for(int y = 0; y < 13; y++) {
 			textField = new JTextField();
 			textField.setEditable(false);
-			textField.setBounds(0, 0, 125, 25);
+			//textField.setBounds(0, 0, 125, 25);
+			textField.setBounds(25, startposy + 25*y, 125, 25);
+			//The Line Below is for Debugging
+			contentPane.add(textField);
 			textField.setColumns(10);
 			hiddenTextfields.put("1" + String.valueOf(y), textField);
 		}
@@ -206,11 +210,19 @@ public class MaskGenerator {
 				CreateStudent.clickCreate(components);
 			}
 		});
+	    SubjectMenuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				CreateSubject.clickCreate(components);
+			}
+		});
         create.add(ClassMenuItem);
         create.add(StudentMenuItem);
         create.add(SubjectMenuItem);
 	    
         menuBar.add(create);
+        //hiddenTextfields.get("10").setBounds(25, 300, 125, 25);
+        //contentPane.add(hiddenTextfields.get("10"));
         
         //Putting all information into a DTO
 		components = new Components(contentPane, visibleTextfields, rowButtons, hiddenTextfields, searchField, this.pageButtons, buttons, menuBar, okButton);

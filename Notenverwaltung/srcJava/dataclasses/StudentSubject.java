@@ -1,19 +1,21 @@
 package dataclasses;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 
 
 public class StudentSubject {
-	private HashMap<String, String[]> student2Subjects;
+	private HashMap<String, ArrayList<Subject>> student2Subjects;
 	private HashMap<String, String[]> subject2Students;
 	private HashMap<String, double[]> stSb2Grades;
 	
-	public HashMap<String, String[]> getStudent2Subjects() {
+	
+	public HashMap<String, ArrayList<Subject>> getStudent2Subjects() {
 		return student2Subjects;
 	}
-	public void setStudent2Subjects(HashMap<String, String[]> student2Subjects) {
+	public void setStudent2Subjects(HashMap<String, ArrayList<Subject>> student2Subjects) {
 		this.student2Subjects = student2Subjects;
 	}
 	public HashMap<String, String[]> getSubject2Students() {

@@ -3,6 +3,7 @@ package logic;
 import dataclasses.Model;
 import dataclasses.SClass;
 import dataclasses.Student;
+import dataclasses.Subject;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -77,15 +78,15 @@ public class DataMapper {
 	
 	public static int createStudent(String inputSt, String inputCl) {
 		String id = IDGenerater.idClass(inputCl);
+		String stID = IDGenerater.idStudent(inputSt);
 		if (!model.getClasses().containsKey(id)) {
 			return(2);
 		}
-		if (model.getStudents().containsKey(id)) {
+		if (model.getStudents().containsKey(stID)) {
 			return(1);
 		}
 		Student newStudent = new Student();
 		newStudent.setName(inputSt);
-		String stID = IDGenerater.idStudent(inputSt);
 		newStudent.setId(stID);
 		model.getClasses().get(id).getStudents().add(newStudent);
 		model.getStudents().put(stID, newStudent);
@@ -124,6 +125,11 @@ public class DataMapper {
 		
 	}
 	
+	public static String StudentsInSubject(String id) {
+		//TODO
+		return(null);
+	}
+	
 	public static String allStudents() {
 		if (!search.equals("st")) {
 			search = "st";
@@ -145,4 +151,71 @@ public class DataMapper {
 		return result;
 	}
 	
+	
+	//Subject
+	public static boolean createSubject(String name) {
+		String id = IDGenerater.idSubject(name);
+		if (model.getSubjects().containsKey(id)){
+			return(false);
+		}
+		Subject subject = new Subject();
+		subject.setName(name);
+		subject.setId(id);
+		model.getSubjects().put(id, subject);
+		return(true);
+	}
+	
+	public static String searchSubject(String id) {
+		if (!model.getSubjects().containsKey(id)) {
+			return(null);
+		}
+		Subject subject = model.getSubjects().get(id);
+		return(subject.getName() + ";" + subject.getAverage() + ";"+ subject.getId()) + ";";
+	}
+	
+	public static String SubjectsInStudent(String id) {
+		//TODO
+		if (!model.getStudents().containsKey(id)) {
+			return(null);
+		}
+		if (!search.equals("it")) {
+			search = "it";
+			index = 0;
+		}
+		if (index < 0) {
+			index = 0;
+		}
+		ArrayList<Subject> subjects = model.getS2s().getStudent2Subjects().get(id);
+		Collections.sort(subjects);
+		if (index > subjects.size()) {
+			return(null);
+		}
+		String result = "";
+		for (int i = index, ii = 0; i < subjects.size() && ii < 12; i++, ii++) {
+			result += String.valueOf(i + 1) + ";" + searchSubject(subjects.get(i).getId());
+		}
+		return (id + ";" + result);
+	}
+	
+	public static String allSubjects() {
+		if (!search.equals("su")) {
+			search = "su";
+			index = 0;
+		}
+		if (index < 0) {
+			index = 0;
+		}
+		ArrayList<String> keys = new ArrayList<>();
+		keys.addAll(model.getSubjects().keySet());
+		Collections.sort(keys);
+		if (index > keys.size()) {
+			return(null);
+		}
+		String result = "";
+		for (int i = index, ii = 0; i < keys.size() && ii < 12; i++, ii++) {
+			result += String.valueOf(i + 1) + ";" + searchSubject(keys.get(i));
+		}
+		return result;
+	
+	}
 }
