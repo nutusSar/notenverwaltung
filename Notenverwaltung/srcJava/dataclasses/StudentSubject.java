@@ -9,7 +9,7 @@ import java.util.Map;
 public class StudentSubject {
 	private HashMap<String, ArrayList<Subject>> student2Subjects = new HashMap<String, ArrayList<Subject>>();
 	private HashMap<String, ArrayList<Student>> subject2Students = new HashMap<String, ArrayList<Student>>();
-	private HashMap<String, ArrayList<Double>> stSb2Grades = new HashMap<String, ArrayList<Double>>();
+	private HashMap<String, ArrayList<Grade>> stSb2Grades = new HashMap<String, ArrayList<Grade>>();
 	
 	
 	public HashMap<String, ArrayList<Subject>> getStudent2Subjects() {
@@ -24,15 +24,12 @@ public class StudentSubject {
 	public void setSubject2Students(HashMap<String, ArrayList<Student>> subject2Students) {
 		this.subject2Students = subject2Students;
 	}
-	public HashMap<String, ArrayList<Double>> getStSb2Grades() {
+	public HashMap<String, ArrayList<Grade>> getStSb2Grades() {
 		return stSb2Grades;
 	}
-	public void setStSb2Grades(HashMap<String, ArrayList<Double>> stSb2Grades) {
+	public void setStSb2Grades(HashMap<String, ArrayList<Grade>> stSb2Grades) {
 		this.stSb2Grades = stSb2Grades;
 	}
-	
-
-	
 	
 
 }
