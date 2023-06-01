@@ -1,5 +1,6 @@
 package logic;
 
+import dataclasses.Grade;
 import dataclasses.Model;
 import dataclasses.SClass;
 import dataclasses.Student;
@@ -280,6 +281,36 @@ public class DataMapper {
 			result += String.valueOf(i + 1) + ";" + searchSubject(keys.get(i));
 		}
 		return result;
+	}
 	
+	//Grade
+	public static boolean addGrade(String id) {
+		//TODO
+		return(false);
+	}
+	
+	public static String gradesInSubject(String id) {
+		if (!model.getS2s().getStSb2Grades().containsKey(id)) {
+			return(null);
+		}
+		if (!search.equals("tu")) {
+			search = "tu";
+			index = 0;
+		}
+		if (index < 0) {
+			index = 0;
+		}
+		ArrayList<Grade> grades = model.getS2s().getStSb2Grades().get(id);
+		if (grades == null) {
+			return(id);
+		}
+		if (index > grades.size()) {
+			return(null);
+		}
+		String result = "";
+		for (int i = index, ii = 0; i < grades.size() && ii < 12; i++, ii++) {
+			result += String.valueOf(i + 1) + ";" + grades.get(i).getWeight() + ";" + grades.get(i).getGrade() + String.valueOf(i);
+		}
+		return (id + ";" + result);
 	}
 }

@@ -25,6 +25,12 @@ public class EditButton {
 				SearchField.clickOk(components, id, false);
 				return;
 			}
+			String stID = components.getHiddenTextfields().get("10").getText();
+			String stsbgrID = stID + ";" + id;
+			if (!id.isEmpty()) {
+				components.getSearchField().setText(stsbgrID);
+				SearchField.clickOk(components, stsbgrID, false);
+			}
 		}
 		id = components.getHiddenTextfields().get("10").getText();
 		if (!id.isEmpty()) {

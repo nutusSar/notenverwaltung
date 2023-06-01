@@ -170,6 +170,29 @@ public class SearchField {
 				components.getHiddenTextfields().get("1" + String.valueOf(y +1)).setText(cells[((y+1)*4) -1]);
 			}
 		}
+		//GradesInSubject
+		String[] stsbgr = input.split(";");
+		if(stsbgr.length > 1) {
+			if (stsbgr[0].matches("([Ss])([Tt])(.*)") && stsbgr[1].matches("([Ss])([Uu])(.*)") ) {
+				components.getVisibleTextfields().get("00").setText("NR");
+				components.getVisibleTextfields().get("10").setText("Weight");
+				components.getVisibleTextfields().get("20").setText("Grade");
+				String result = DataMapper.gradesInSubject(String.join("", stsbgr).toUpperCase());
+				if (result == null) {
+					return;
+				}
+				String[] cellsE = result.split(";");
+				components.getHiddenTextfields().get("10").setText(cellsE[0]);
+				String[] cells = new String[cellsE.length - 1];
+				System.arraycopy(cellsE, 1, cells, 0, cellsE.length - 1);
+				for (int y = 0; y < (cells.length) / 4; y++) {
+					for (int x = 0; x < 3; x++) {
+						components.getVisibleTextfields().get(String.valueOf(x) + String.valueOf(y + 1)).setText(cells[y * 4 + x]);
+					}
+					components.getHiddenTextfields().get("1" + String.valueOf(y +1)).setText(cells[((y+1)*4) -1]);
+				}
+			}
+		}
 	}
 }
 
