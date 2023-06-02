@@ -287,9 +287,20 @@ public class DataMapper {
 	}
 	
 	//Grade
-	public static boolean addGrade(String id) {
-		//TODO
-		return(false);
+	public static int addGrade(String id, String input1, String input2) {
+		int gr = Integer.valueOf(input1);
+		int we = Integer.valueOf(input2);
+		if (gr > 15) {
+			return(4);
+		}
+		if(!model.getS2s().getStSb2Grades().containsKey(id)) {
+			return(4);
+		}
+		Grade grade = new Grade();
+		grade.setGrade(gr);
+		grade.setWeight(we);
+		model.getS2s().getStSb2Grades().get(id).add(grade);
+		return(0);
 	}
 	
 	public static String gradesInSubject(String id) {
@@ -313,7 +324,7 @@ public class DataMapper {
 		}
 		String result = "";
 		for (int i = index, ii = 0; i < grades.size() && ii < 12; i++, ii++) {
-			result += String.valueOf(i + 1) + ";" + grades.get(i).getWeight() + ";" + grades.get(i).getGrade() + String.valueOf(i);
+			result += String.valueOf(i + 1) + ";" + grades.get(i).getWeight() + ";" + grades.get(i).getGrade() + ";" + String.valueOf(i) + ";";
 		}
 		return (id + ";" + result);
 	}
