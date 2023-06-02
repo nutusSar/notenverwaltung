@@ -1,5 +1,7 @@
 package logic;
 
+import java.util.Arrays;
+
 import javax.swing.JTextField;
 
 import dataclasses.Components;
@@ -173,7 +175,7 @@ public class SearchField {
 		//GradesInSubject
 		String[] stsbgr = input.split("\\+");
 		if(stsbgr.length > 1) {
-			if (stsbgr[0].matches("([Ss])([Tt])(.*)") && stsbgr[1].matches("([Ss])([Uu])(.*)") ) {
+			if (stsbgr[0].substring(2).matches("([Ss])([Tt])(.*)") && stsbgr[1].matches("([Ss])([Uu])(.*)") ) {
 				components.getVisibleTextfields().get("00").setText("NR");
 				components.getVisibleTextfields().get("10").setText("Weight");
 				components.getVisibleTextfields().get("20").setText("Grade");

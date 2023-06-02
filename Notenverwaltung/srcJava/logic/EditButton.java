@@ -26,15 +26,18 @@ public class EditButton {
 				return;
 			}
 			String stID = components.getHiddenTextfields().get("10").getText();
-			String stsbgrID = stID + "+" + id;
-			if (!id.isEmpty()) {
+			String stsbgrID = "GR"+ stID + "+" + id;
+			if (!stID.isEmpty()) {
 				components.getSearchField().setText(stsbgrID);
 				SearchField.clickOk(components, stsbgrID, false);
 			}
 		}
 		id = components.getHiddenTextfields().get("10").getText();
-		if (!id.isEmpty()) {
+		if (!id.isEmpty() && id.matches("([Ss])([Tt])(.*)")) {
 			AddSubject.clickEdit(components, cell, id);
+		}
+		if (!id.isEmpty() && id.matches("([Gg])([Rr])(.*)")) {
+			AddGrade.clickEdit(components, cell, id);
 		}
 		//components.getVisibleTextfields().get(cell).setText(id);
 	}

@@ -225,6 +225,9 @@ public class DataMapper {
 			students.add(model.getStudents().get(id));
 			model.getS2s().getSubject2Students().put(sbID, students);
 		}
+		String stsugrID = "GR" + id + "+" + sbID;
+		ArrayList<Grade> grades= new ArrayList<Grade>();
+		model.getS2s().getStSb2Grades().put(stsugrID, grades);
 		return(0);
 	}
 	
@@ -290,7 +293,7 @@ public class DataMapper {
 	}
 	
 	public static String gradesInSubject(String id) {
-		//TODO needs to be remodeld, two seperate lookups
+		//TODO needs to be remodeld, two seperate lookups or add specific id already in subject adding funciton
 		if (!model.getS2s().getStSb2Grades().containsKey(id)) {
 			return(null);
 		}
