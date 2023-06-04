@@ -89,6 +89,7 @@ public class DataMapper {
 		Student newStudent = new Student();
 		newStudent.setName(inputSt);
 		newStudent.setId(stID);
+		newStudent.setSclass(id);
 		model.getClasses().get(id).getStudents().add(newStudent);
 		model.getStudents().put(stID, newStudent);
 		return 0;
@@ -226,8 +227,10 @@ public class DataMapper {
 			model.getS2s().getSubject2Students().put(sbID, students);
 		}
 		String stsugrID = "GR" + id + "+" + sbID;
+		System.out.println(stsugrID);
 		ArrayList<Grade> grades= new ArrayList<Grade>();
 		model.getS2s().getStSb2Grades().put(stsugrID, grades);
+		model.getS2s().getStSb2Average().put(stsugrID, -1.0);
 		return(0);
 	}
 	
@@ -259,8 +262,16 @@ public class DataMapper {
 			return(id); //modiefied maybe should stay null?
 		}
 		String result = "";
+		
+		
+		Subject subject;
+		double average = -1;
+		String stsbID;
 		for (int i = index, ii = 0; i < subjects.size() && ii < 12; i++, ii++) {
-			result += String.valueOf(i + 1) + ";" + searchSubject(subjects.get(i).getId());
+			subject = subjects.get(i);
+			stsbID = "GR" + id + "+" + subject.getId();
+			average = model.getS2s().getStSb2Average().get(stsbID);
+			result += String.valueOf(i + 1) + ";" + subject.getName() + ";" + average + ";"+ subject.getId() + ";";
 		}
 		return (id + ";" + result);
 	}
@@ -300,6 +311,7 @@ public class DataMapper {
 		grade.setGrade(gr);
 		grade.setWeight(we);
 		model.getS2s().getStSb2Grades().get(id).add(grade);
+		average(id);
 		return(0);
 	}
 	
@@ -327,5 +339,21 @@ public class DataMapper {
 			result += String.valueOf(i + 1) + ";" + grades.get(i).getWeight() + ";" + grades.get(i).getGrade() + ";" + String.valueOf(i) + ";";
 		}
 		return (id + ";" + result);
+	}
+	
+	public static void average(String id) {
+		String ids[] = id.split("\\+");
+		ids[0] = ids[0].substring(2);
+		ArrayList<Grade> grades  = model.getS2s().getStSb2Grades().get(id);
+		double sum = 0;
+		double count = 0;
+		for (Grade grade : grades) {
+			sum += grade.getGrade() * grade.getWeight();
+			count += grade.getWeight();
+		}
+		double average = sum / count;
+		model.getS2s().getStSb2Average().put(id, average);
+		
+		
 	}
 }

@@ -3,7 +3,7 @@ package dataclasses;
 public class Subject implements Comparable<Subject>{
 	private String name;
 	private String id;
-	private double average;
+	private double average = -1.0;
 	
 	public String getName() {
 		return name;

@@ -3,7 +3,8 @@ package dataclasses;
 public class Student implements Comparable<Student>{
 	private String name;
 	private String id;
-	private double average;
+	private String sclass;
+	private double average = -1.0;
 	private boolean abitur;
 	
 	public String getName() {
@@ -17,6 +18,12 @@ public class Student implements Comparable<Student>{
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	public String getSclass() {
+		return sclass;
+	}
+	public void setSclass(String sclass) {
+		this.sclass = sclass;
 	}
 	public double getAverage() {
 		return average;

@@ -6,7 +6,7 @@ public class SClass {
 	private String name;
 	private String id;
 	private ArrayList<Student> students = new ArrayList<Student>();
-	private double average;
+	private double average = -1.0;
 	
 	public String getName() {
 		return name;
