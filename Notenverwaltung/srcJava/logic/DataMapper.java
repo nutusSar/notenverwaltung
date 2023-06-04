@@ -7,6 +7,7 @@ import dataclasses.Student;
 import dataclasses.Subject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 public class DataMapper {
@@ -227,7 +228,6 @@ public class DataMapper {
 			model.getS2s().getSubject2Students().put(sbID, students);
 		}
 		String stsugrID = "GR" + id + "+" + sbID;
-		System.out.println(stsugrID);
 		ArrayList<Grade> grades= new ArrayList<Grade>();
 		model.getS2s().getStSb2Grades().put(stsugrID, grades);
 		model.getS2s().getStSb2Average().put(stsugrID, -1.0);
@@ -354,6 +354,19 @@ public class DataMapper {
 		double average = sum / count;
 		model.getS2s().getStSb2Average().put(id, average);
 		
-		
+		//total average student
+		ArrayList<Subject> subjects = model.getS2s().getStudent2Subjects().get(ids[0]);
+		sum = 0;
+		count = 0;
+		double avSu;
+		for (Subject subject : subjects) {
+			avSu = model.getS2s().getStSb2Average().get("GR" + ids[0] + "+" + subject.getId());
+			if (avSu != -1) {
+				sum += avSu;
+				count++;
+			}			
+		}
+		average = sum / count;
+		model.getStudents().get(ids[0]).setAverage(average);
 	}
 }
