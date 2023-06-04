@@ -358,15 +358,31 @@ public class DataMapper {
 		ArrayList<Subject> subjects = model.getS2s().getStudent2Subjects().get(ids[0]);
 		sum = 0;
 		count = 0;
-		double avSu;
+		double av;
 		for (Subject subject : subjects) {
-			avSu = model.getS2s().getStSb2Average().get("GR" + ids[0] + "+" + subject.getId());
-			if (avSu != -1) {
-				sum += avSu;
+			av = model.getS2s().getStSb2Average().get("GR" + ids[0] + "+" + subject.getId());
+			if (av != -1) {
+				sum += av;
 				count++;
 			}			
 		}
 		average = sum / count;
 		model.getStudents().get(ids[0]).setAverage(average);
+		
+		//total Average class
+		String scId = model.getStudents().get(ids[0]).getSclass();
+		ArrayList<Student> students = model.getClasses().get(scId).getStudents();
+		sum = 0;
+		count = 0;
+		for(Student student : students) {
+			av = student.getAverage();
+			if (av != -1) {
+				sum += av;
+				count++;
+			}
+		}
+		average = sum / count;
+		model.getClasses().get(scId).setAverage(average);
+		
 	}
 }
