@@ -344,6 +344,8 @@ public class DataMapper {
 	public static void average(String id) {
 		String ids[] = id.split("\\+");
 		ids[0] = ids[0].substring(2);
+		
+		//average of one subject in one student
 		ArrayList<Grade> grades  = model.getS2s().getStSb2Grades().get(id);
 		double sum = 0;
 		double count = 0;
@@ -384,5 +386,19 @@ public class DataMapper {
 		average = sum / count;
 		model.getClasses().get(scId).setAverage(average);
 		
+		//total average of one module
+		ArrayList<Student> studentsModule = model.getS2s().getSubject2Students().get(ids[1]);
+		sum = 0;
+		count = 0;
+		for(Student student : studentsModule) {
+			av = student.getAverage();
+			if (av != -1) {
+				sum += av;
+				count++;
+			}
+		}
+		average = sum / count;
+		model.getSubjects().get(ids[1]).setAverage(average);
 	}
+	
 }
