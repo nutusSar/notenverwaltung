@@ -32,7 +32,6 @@ public class StartApp extends JFrame{
 		   Loader.load(selectedFile);
 		   
 		   
-		   
 		   MaskGenerator mask = new MaskGenerator(true);
 			components = mask.getComponents();
 			EventQueue.invokeLater(new Runnable() {

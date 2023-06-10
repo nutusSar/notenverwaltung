@@ -1,11 +1,17 @@
 package logic;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
 import dataclasses.Model;
+import dataclasses.SClass;
+import dataclasses.Student;
 import dataclasses.Subject;
 
 public class Loader {
@@ -55,10 +61,11 @@ public class Loader {
 	
 	//loads all modules
 	public static void loadModule(File module) {
-		String id = module.getName().toUpperCase();
-		if (!model.getSubjects().containsKey(id) && id.substring(0, 2).equals("SU")) {
+		String name = module.getName();
+		String id = "SU" + name.toUpperCase();
+		if (!model.getSubjects().containsKey(id)) {
 			Subject subject = new Subject();
-			subject.setName(id.substring(2));
+			subject.setName(name);
 			subject.setId(id);
 			model.getSubjects().put(id, subject);
 		}
@@ -66,9 +73,50 @@ public class Loader {
 	
 	//loads all classes 
 	public static void loadClass(File sclass) {
-		String id = sclass.getName();
-		if (id.substring(0, 2).equals("")) {
-			System.out.println(id);
+		String name = sclass.getName();
+		String id = "SC" + name.toUpperCase();
+		if (!model.getClasses().containsKey(id)) {
+			SClass newSClass = new SClass();
+			newSClass.setName(name);
+			newSClass.setId(id);			
+			model.getClasses().put(id, newSClass);
+			
+			File[] students = sclass.listFiles();
+			for (File student : students) {
+				loadStudent(id, student);
+			}
+		}
+	}
+	
+	//loads all students
+	public static void loadStudent(String clID, File student) {
+		String name = student.getName();
+		name = name.substring(0, name.length() - 4);
+		String id = "ST" + name.toUpperCase();
+		if (!model.getStudents().containsKey(id)) {
+			Student newStudent = new Student();
+			newStudent.setName(name);
+			newStudent.setId(id);
+			model.getStudents().put(id, newStudent);
+			model.getClasses().get(clID).getStudents().add(newStudent);
+			loadSubjects(id, student);
+		}
+	}
+	
+	//load all subjects and grades into student
+	public static void loadSubjects(String stID, File student){
+		try (FileReader fileReader = new FileReader(student);
+			BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+				String line;
+				while ((line = bufferedReader.readLine()) != null) {
+			        System.out.println(line);
+			    }
+			}
+		
+		catch (FileNotFoundException e) {
+			// handle FileNotFoundExceptions here
+		} catch (IOException e) {
+			// handle any other IOExceptions here
 		}
 	}
 }
