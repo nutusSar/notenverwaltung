@@ -55,6 +55,7 @@ public class Loader {
 		}
 		
 		DataMapper.setModel(model);
+		DataMapper.initAverage();
 		return(true);
 	}
 	

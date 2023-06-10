@@ -401,5 +401,20 @@ public class DataMapper {
 		average = sum / count;
 		model.getSubjects().get(ids[1]).setAverage(average);
 	}
+	public static void initAverage() {
+		// TODO Auto-generated method stub
+		ArrayList<String> studentKeys = new ArrayList<String>();
+		studentKeys.addAll(model.getStudents().keySet());
+		for (String studentKey : studentKeys) {
+			ArrayList<Subject> subjects = model.getS2s().getStudent2Subjects().get(studentKey);
+			if (subjects != null) {
+				for (Subject subject : subjects) {
+					String stsbID = "GR" + studentKey + "+" + subject.getId();
+					average(stsbID);
+				}
+			}
+			
+		}
+	}
 	
 }
