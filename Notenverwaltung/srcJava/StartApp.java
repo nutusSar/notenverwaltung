@@ -1,11 +1,14 @@
 import java.awt.EventQueue;
+import java.io.File;
 
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import dataclasses.Components;
 import gui.Student;
+import logic.Loader;
 import maskGen.MaskGenerator;
 
 public class StartApp extends JFrame{
@@ -16,18 +19,34 @@ public class StartApp extends JFrame{
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		MaskGenerator mask = new MaskGenerator(true);
-		components = mask.getComponents();
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					StartApp frame = new StartApp(mask);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
+		JFileChooser fileChooser = new JFileChooser();
+		fileChooser.setCurrentDirectory(new java.io.File("C:\\"));
+		fileChooser.setDialogTitle("Select a directory");
+		fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+		int result = fileChooser.showOpenDialog(null);
+		if (result == JFileChooser.APPROVE_OPTION ) {
+		   File selectedFile = fileChooser.getSelectedFile();
+		   System.out.println("Selected directory: " + selectedFile);
+		   
+		   Loader.load(selectedFile);
+		   
+		   
+		   
+		   MaskGenerator mask = new MaskGenerator(true);
+			components = mask.getComponents();
+			EventQueue.invokeLater(new Runnable() {
+				public void run() {
+					try {
+						StartApp frame = new StartApp(mask);
+						frame.setVisible(true);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 				}
-			}
-		});
+			});
+		}
+		
 		
 	}
 	public StartApp(MaskGenerator mask) {

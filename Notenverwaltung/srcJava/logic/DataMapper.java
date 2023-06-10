@@ -16,10 +16,10 @@ public class DataMapper {
 	private static int index = 0;
 	private static String search = "";
 
-	public Model getModel() {
+	public static Model getModel() {
 		return model;
 	}
-	public void setModel(Model model) {
+	public static void setModel(Model model) {
 		DataMapper.model = model;
 	}
 	public static int getIndex() {
@@ -316,7 +316,6 @@ public class DataMapper {
 	}
 	
 	public static String gradesInSubject(String id) {
-		//TODO needs to be remodeld, two seperate lookups or add specific id already in subject adding funciton
 		if (!model.getS2s().getStSb2Grades().containsKey(id)) {
 			return(null);
 		}
@@ -332,7 +331,7 @@ public class DataMapper {
 			return(id);
 		}
 		if (index > grades.size()) {
-			return(id); //modiefied maybe should stay null?
+			return(id); 
 		}
 		String result = "";
 		for (int i = index, ii = 0; i < grades.size() && ii < 12; i++, ii++) {
