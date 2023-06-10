@@ -159,9 +159,13 @@ public class Loader {
 				model.getS2s().getStSb2Grades().put(stsbID, grades);
 				model.getS2s().getStSb2Average().put(stsbID, -1.0);
 				
+				boolean gradesAdded = false;
 				for (int gradeCounter = 1; gradeCounter < content.length; gradeCounter++ ) {
-					double grade = Double.valueOf(content[gradeCounter].split(":")[0]);
-					double weight = Double.valueOf(content[gradeCounter].split(":")[1]);
+					Grade grade = new Grade();
+					grade.setGrade(Double.valueOf(content[gradeCounter].split(":")[0]));
+					grade.setWeight(Double.valueOf(content[gradeCounter].split(":")[1]));
+					model.getS2s().getStSb2Grades().get(stsbID).add(grade);
+					gradesAdded = true;
 				}
 			}
 		}
