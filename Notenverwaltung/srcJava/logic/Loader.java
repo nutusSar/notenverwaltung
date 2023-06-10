@@ -101,6 +101,7 @@ public class Loader {
 			newStudent.setName(name);
 			newStudent.setId(id);
 			newStudent.setSclass(clID);
+			newStudent.setAverage(-1.0);
 			model.getStudents().put(id, newStudent);
 			model.getClasses().get(clID).getStudents().add(newStudent);
 			loadSubjects(id, student);
@@ -156,17 +157,16 @@ public class Loader {
 				model.getS2s().getSubject2Students().get(id).add(model.getStudents().get(stID));
 				
 				String stsbID = "GR" + stID + "+" + id;
+				System.out.println(stsbID);
 				ArrayList<Grade> grades = new ArrayList<Grade>();
 				model.getS2s().getStSb2Grades().put(stsbID, grades);
 				model.getS2s().getStSb2Average().put(stsbID, -1.0);
 				
-				boolean gradesAdded = false;
 				for (int gradeCounter = 1; gradeCounter < content.length; gradeCounter++ ) {
 					Grade grade = new Grade();
 					grade.setGrade(Double.valueOf(content[gradeCounter].split(":")[0]));
 					grade.setWeight(Double.valueOf(content[gradeCounter].split(":")[1]));
 					model.getS2s().getStSb2Grades().get(stsbID).add(grade);
-					gradesAdded = true;
 				}
 			}
 		}

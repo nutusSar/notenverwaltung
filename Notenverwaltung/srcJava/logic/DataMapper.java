@@ -353,13 +353,18 @@ public class DataMapper {
 		
 		//average of one subject in one student
 		ArrayList<Grade> grades  = model.getS2s().getStSb2Grades().get(id);
+		double average = -1.0;
 		double sum = 0;
 		double count = 0;
-		for (Grade grade : grades) {
-			sum += grade.getGrade() * grade.getWeight();
-			count += grade.getWeight();
+		if (!grades.isEmpty()) {
+			
+			for (Grade grade : grades) {
+				sum += grade.getGrade() * grade.getWeight();
+				count += grade.getWeight();
+			}
+			average = sum / count;
+			
 		}
-		double average = sum / count;
 		model.getS2s().getStSb2Average().put(id, average);
 		
 		//total average student
@@ -374,7 +379,9 @@ public class DataMapper {
 				count++;
 			}			
 		}
-		average = sum / count;
+		if (count != 0) {
+			average = sum / count;
+		}
 		model.getStudents().get(ids[0]).setAverage(average);
 		
 		//total Average class
@@ -391,7 +398,9 @@ public class DataMapper {
 				count++;
 			}
 		}
-		average = sum / count;
+		if (count != 0) {
+			average = sum / count;
+		}
 		model.getClasses().get(scId).setAverage(average);
 		
 		//total average of one module
@@ -400,12 +409,15 @@ public class DataMapper {
 		count = 0;
 		for(Student student : studentsModule) {
 			av = student.getAverage();
+			System.out.println(av);
 			if (av != -1) {
 				sum += av;
 				count++;
 			}
 		}
-		average = sum / count;
+		if (count != 0) {
+			average = sum / count;
+		}
 		model.getSubjects().get(ids[1]).setAverage(average);
 	}
 	public static void initAverage() {

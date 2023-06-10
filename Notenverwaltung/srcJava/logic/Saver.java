@@ -68,7 +68,7 @@ public class Saver {
 					content += String.valueOf(grade.getGrade()) + ":";
 					content += String.valueOf(grade.getWeight()) + ";";
 				}
-				content += "\n";
+				content = content.substring(0, content.length() -1) + "\n";
 			}
 		    fileWriter.write(content);
 		} catch (IOException e) {
