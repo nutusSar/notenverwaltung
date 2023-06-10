@@ -371,7 +371,9 @@ public class DataMapper {
 		model.getStudents().get(ids[0]).setAverage(average);
 		
 		//total Average class
+		System.out.println(ids[0]);
 		String scId = model.getStudents().get(ids[0]).getSclass();
+		System.out.println(scId);
 		ArrayList<Student> students = model.getClasses().get(scId).getStudents();
 		sum = 0;
 		count = 0;
