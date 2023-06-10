@@ -6,10 +6,11 @@ import java.util.Arrays;
 import java.util.Collections;
 
 import dataclasses.Model;
+import dataclasses.Subject;
 
 public class Loader {
 	
-	private Model model = new Model();
+	private static Model model = new Model();
 	private static ArrayList<File> classes = new ArrayList<File>();
 	private static ArrayList<File> modules = new ArrayList<File>();
 
@@ -42,23 +43,32 @@ public class Loader {
 		
 		for (File module : modules) {
 			loadModule(module);
-		}
-		
+		}		
 		for(File sclass : classes) {
 			loadClass(sclass);
 		}
+		
+		DataMapper.setModel(model);
 		return(true);
 	}
 	
 	
 	//loads all modules
-	
+	public static void loadModule(File module) {
+		String id = module.getName().toUpperCase();
+		if (!model.getSubjects().containsKey(id) && id.substring(0, 2).equals("SU")) {
+			Subject subject = new Subject();
+			subject.setName(id.substring(2));
+			subject.setId(id);
+			model.getSubjects().put(id, subject);
+		}
+	}
 	
 	//loads all classes 
 	public static void loadClass(File sclass) {
 		String id = sclass.getName();
 		if (id.substring(0, 2).equals("")) {
-			
+			System.out.println(id);
 		}
 	}
 }
