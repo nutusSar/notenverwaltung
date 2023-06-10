@@ -6,6 +6,7 @@ import dataclasses.SClass;
 import dataclasses.Student;
 import dataclasses.Subject;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,6 +16,7 @@ public class DataMapper {
 	private static Model model = new Model();
 	private static int index = 0;
 	private static String search = "";
+	private static File directory;
 
 	public static Model getModel() {
 		return model;
@@ -34,7 +36,12 @@ public class DataMapper {
 	public static void setSearch(String search) {
 		DataMapper.search = search;
 	}
-	
+	public static File getDirectory() {
+		return directory;
+	}
+	public static void setDirectory(File directory) {
+		DataMapper.directory = directory;
+	}
 	
 	public static boolean createClass(String name) {
 		String id = IDGenerater.idClass(name);

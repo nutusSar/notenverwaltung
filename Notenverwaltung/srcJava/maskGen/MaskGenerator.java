@@ -25,6 +25,7 @@ import logic.CreateSubject;
 import logic.DeleteButton;
 import logic.EditButton;
 import logic.PageButtons;
+import logic.Saver;
 import logic.SearchField;
 
 public class MaskGenerator {
@@ -188,6 +189,12 @@ public class MaskGenerator {
 	    JMenuItem newMenuItem = new JMenuItem("New");
 	    JMenuItem openMenuItem = new JMenuItem("Open");
 	    JMenuItem saveMenuItem = new JMenuItem("Save");
+	    saveMenuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Saver.save();
+			}
+		});
 	    fileMenu.add(newMenuItem);
         fileMenu.add(openMenuItem);
         fileMenu.add(saveMenuItem);

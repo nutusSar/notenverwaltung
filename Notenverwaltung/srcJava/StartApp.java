@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 
 import dataclasses.Components;
 import gui.Student;
+import logic.DataMapper;
 import logic.Loader;
 import maskGen.MaskGenerator;
 
@@ -28,7 +29,7 @@ public class StartApp extends JFrame{
 		if (result == JFileChooser.APPROVE_OPTION ) {
 		   File selectedFile = fileChooser.getSelectedFile();
 		   System.out.println("Selected directory: " + selectedFile);
-		   
+		   DataMapper.setDirectory(selectedFile);
 		   Loader.load(selectedFile);
 		   
 		   
