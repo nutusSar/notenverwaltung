@@ -466,6 +466,7 @@ public class DataMapper {
 		initAverage();
 	}
 	
+	//maybe do an reload and delete the folder before
 	public static void deleteStudent(String stID) {
 		if (!model.getStudents().containsKey(stID)) {
 			return;
@@ -479,6 +480,17 @@ public class DataMapper {
 		String scID = student.getSclass();
 		model.getClasses().get(scID).getStudents().remove(student);
 		model.getStudents().remove(stID);
+	}
+	
+	public static void deleteClass(String scID) {
+		if (!model.getClasses().containsKey(scID)) {
+			return;
+		}
+		ArrayList<Student> students = new ArrayList<Student>(model.getClasses().get(scID).getStudents());
+		for (Student student : students) {
+			deleteStudent(student.getId());
+		}
+		model.getClasses().remove(scID);
 	}
 	
 }
