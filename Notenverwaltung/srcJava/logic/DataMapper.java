@@ -418,7 +418,6 @@ public class DataMapper {
 		model.getSubjects().get(ids[1]).setAverage(average);
 	}
 	public static void initAverage() {
-		// TODO Auto-generated method stub
 		ArrayList<String> studentKeys = new ArrayList<String>();
 		studentKeys.addAll(model.getStudents().keySet());
 		for (String studentKey : studentKeys) {
@@ -428,9 +427,58 @@ public class DataMapper {
 					String stsbID = "GR" + studentKey + "+" + subject.getId();
 					average(stsbID);
 				}
-			}
-			
+			}	
+		}		
+	}
+	
+	public static void deleteGrade(String stsbID, int iGrade) {
+		if (!model.getS2s().getStSb2Grades().containsKey(stsbID)) {
+			return;
 		}
+		model.getS2s().getStSb2Grades().get(stsbID).remove(iGrade);
+		initAverage();
+	}
+	
+	public static void deleteSubject(String stsbID) {
+		if (!model.getS2s().getStSb2Grades().containsKey(stsbID)) {
+			return;
+		}
+		String ids[] = stsbID.split("\\+");
+		ids[0] = ids[0].substring(2);
+		model.getS2s().getStSb2Average().remove(stsbID);
+		if (model.getS2s().getStSb2Grades() != null) {
+			model.getS2s().getStSb2Grades().remove(stsbID);
+		}
+		ArrayList<Subject> subjects = model.getS2s().getStudent2Subjects().get(ids[0]);
+		for (Subject subject : subjects) {
+			if (subject.getId().equals(ids[1])) {
+				subjects.remove(subject);
+				break;
+			}
+		}
+		ArrayList<Student> students = model.getS2s().getSubject2Students().get(ids[1]);
+		for (Student student : students) {
+			if (student.getId().equals(ids[0])) {
+				subjects.remove(student);
+				break;
+			}
+		}
+		initAverage();
+	}
+	
+	public static void deleteStudent(String stID) {
+		if (!model.getStudents().containsKey(stID)) {
+			return;
+		}
+		ArrayList<Subject> subjects = new ArrayList<Subject>(model.getS2s().getStudent2Subjects().get(stID));
+		for(Subject subject : subjects) {
+			String stsbID = "GR" + stID + "+" + subject.getId();
+			deleteSubject(stsbID);
+		}
+		Student student = model.getStudents().get(stID);
+		String scID = student.getSclass();
+		model.getClasses().get(scID).getStudents().remove(student);
+		model.getStudents().remove(stID);
 	}
 	
 }

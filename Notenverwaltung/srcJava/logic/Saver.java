@@ -21,13 +21,16 @@ public class Saver {
 		File classesDirectory = new File(selectedDirectory, "/Classes");
 		File modulesDirectory = new File(selectedDirectory, "/Modules");
 		
-		if (!classesDirectory.exists()) {
-		    classesDirectory.mkdirs();
+		if (classesDirectory.exists()) {
+		    classesDirectory.delete();
 		}
+		classesDirectory.mkdirs();
 		
-		if (!modulesDirectory.exists()) {
-			modulesDirectory.mkdirs();
+		if (modulesDirectory.exists()) {
+			modulesDirectory.delete();
 		}
+		modulesDirectory.mkdirs();
+
 		
 		ArrayList<SClass> sclasses = new ArrayList<SClass>();
 		sclasses.addAll(model.getClasses().values());
