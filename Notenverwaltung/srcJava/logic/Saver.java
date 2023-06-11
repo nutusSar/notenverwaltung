@@ -22,12 +22,13 @@ public class Saver {
 		File modulesDirectory = new File(selectedDirectory, "/Modules");
 		
 		if (classesDirectory.exists()) {
-		    classesDirectory.delete();
+		    deleteDirectory(classesDirectory);
+		   
 		}
 		classesDirectory.mkdirs();
 		
 		if (modulesDirectory.exists()) {
-			modulesDirectory.delete();
+			deleteDirectory(modulesDirectory);
 		}
 		modulesDirectory.mkdirs();
 
@@ -55,6 +56,18 @@ public class Saver {
 	}
 
 
+	public static void deleteDirectory(File directory) {
+		if (directory.isDirectory()) {
+	        File[] files = directory.listFiles();
+	        if (files != null) {
+	            for (File file : files) {
+	                deleteDirectory(file);
+	            }
+	        }
+	    }
+	    directory.delete();
+	}
+	
 	public static void saveStudent(File classDir, Student student) {
 		File studentFile = new File(classDir, "/" + student.getName() + ".txt");
 		try (FileWriter fileWriter = new FileWriter(studentFile, false)) {

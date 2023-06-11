@@ -97,7 +97,7 @@ public class MaskGenerator {
 			//textField.setBounds(0, 0, 125, 25);
 			textField.setBounds(25, startposy + 25*y, 125, 25);
 			//The Line Below is for Debugging
-			contentPane.add(textField);
+			//contentPane.add(textField);
 			textField.setColumns(10);
 			hiddenTextfields.put("1" + String.valueOf(y), textField);
 		}
@@ -228,8 +228,6 @@ public class MaskGenerator {
         create.add(SubjectMenuItem);
 	    
         menuBar.add(create);
-        //hiddenTextfields.get("10").setBounds(25, 300, 125, 25);
-        //contentPane.add(hiddenTextfields.get("10"));
         
         //Putting all information into a DTO
 		components = new Components(contentPane, visibleTextfields, rowButtons, hiddenTextfields, searchField, this.pageButtons, buttons, menuBar, okButton);
