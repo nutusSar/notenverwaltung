@@ -28,7 +28,6 @@ public class StartApp extends JFrame{
 		int result = fileChooser.showOpenDialog(null);
 		if (result == JFileChooser.APPROVE_OPTION ) {
 		   File selectedFile = fileChooser.getSelectedFile();
-		   System.out.println("Selected directory: " + selectedFile);
 		   DataMapper.setDirectory(selectedFile);
 		   Loader.load(selectedFile);
 		   

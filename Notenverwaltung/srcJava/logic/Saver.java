@@ -73,7 +73,6 @@ public class Saver {
 		    fileWriter.write(content);
 		} catch (IOException e) {
 		    // handle any IOExceptions here
-			System.out.println("Error");
 		}
 	}
 	

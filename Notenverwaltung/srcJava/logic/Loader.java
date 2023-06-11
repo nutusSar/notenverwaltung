@@ -28,7 +28,6 @@ public class Loader {
 		//gets all classes
 		if (classesDirectory.exists()) {
 			Collections.addAll(classes, classesDirectory.listFiles());
-			System.out.println(classes);
 		}
 		else {
 			//TODO Error GUI
@@ -39,7 +38,6 @@ public class Loader {
 		//gets all Modules
 		if (modulesDirectory.exists()) {
 			Collections.addAll(modules, modulesDirectory.listFiles());
-			System.out.println(modules);
 		}
 		else {
 			//TODO Error GUI
@@ -157,7 +155,6 @@ public class Loader {
 				model.getS2s().getSubject2Students().get(id).add(model.getStudents().get(stID));
 				
 				String stsbID = "GR" + stID + "+" + id;
-				System.out.println(stsbID);
 				ArrayList<Grade> grades = new ArrayList<Grade>();
 				model.getS2s().getStSb2Grades().put(stsbID, grades);
 				model.getS2s().getStSb2Average().put(stsbID, -1.0);
