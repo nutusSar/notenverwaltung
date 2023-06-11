@@ -449,20 +449,11 @@ public class DataMapper {
 		if (model.getS2s().getStSb2Grades() != null) {
 			model.getS2s().getStSb2Grades().remove(stsbID);
 		}
-		ArrayList<Subject> subjects = model.getS2s().getStudent2Subjects().get(ids[0]);
-		for (Subject subject : subjects) {
-			if (subject.getId().equals(ids[1])) {
-				subjects.remove(subject);
-				break;
-			}
-		}
-		ArrayList<Student> students = model.getS2s().getSubject2Students().get(ids[1]);
-		for (Student student : students) {
-			if (student.getId().equals(ids[0])) {
-				subjects.remove(student);
-				break;
-			}
-		}
+		Subject subject = model.getSubjects().get(ids[1]);
+		model.getS2s().getStudent2Subjects().get(ids[0]).remove(subject);
+		
+		Student student = model.getStudents().get(ids[0]);
+		model.getS2s().getSubject2Students().get(ids[1]).remove(student);		
 		initAverage();
 	}
 	
@@ -491,6 +482,18 @@ public class DataMapper {
 			deleteStudent(student.getId());
 		}
 		model.getClasses().remove(scID);
+	}
+	
+	public static void deleteModule(String sbID) {
+		if (!model.getSubjects().containsKey(sbID)) {
+			return;
+		}
+		ArrayList<Student> students = new ArrayList<Student>(model.getS2s().getSubject2Students().get(sbID));
+		for (Student student : students) {
+			String stsbID = "GR" + student.getId() + "+" + sbID;
+			deleteSubject(stsbID);
+		}
+		model.getSubjects().remove(sbID);
 	}
 	
 }

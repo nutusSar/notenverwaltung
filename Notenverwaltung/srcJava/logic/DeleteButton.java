@@ -34,6 +34,9 @@ public class DeleteButton {
 			if (components.getHiddenTextfields().get("10").getText().isEmpty() &&  components.getHiddenTextfields().get(cell).getText().matches("([Ss])([Cc])(.*)")) {
 				DataMapper.deleteClass(components.getHiddenTextfields().get(cell).getText());
 			}
+			if (components.getHiddenTextfields().get("10").getText().isEmpty() &&  components.getHiddenTextfields().get(cell).getText().matches("([Ss])([Uu])(.*)")) {
+				DataMapper.deleteModule(components.getHiddenTextfields().get(cell).getText());
+			}
 			components.getVisibleTextfields().get(cell).setText("");
 			components.getVisibleTextfields().get("0" + y).setText("");
 			components.getVisibleTextfields().get("2" + y).setText("");
