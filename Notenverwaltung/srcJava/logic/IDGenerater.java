@@ -1,5 +1,10 @@
 package logic;
 
+/**generates ids -> student, subject/module, class
+ * 
+ * @author nutusSar
+ *
+ */
 public class IDGenerater {
 	
 	public static String idClass(String name) {

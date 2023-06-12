@@ -2,6 +2,11 @@ package dataclasses;
 
 import java.util.ArrayList;
 
+/**Model for one school class
+ * 
+ * @author nutusSar
+ *
+ */
 public class SClass {
 	private String name;
 	private String id;

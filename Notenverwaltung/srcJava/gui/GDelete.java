@@ -14,7 +14,11 @@ import dataclasses.Components;
 import logic.DeleteButton;
 import logic.EnableDisable;
 
-
+/**GUI for deleting one entry in the table
+ * 
+ * @author nutusSar
+ *
+ */
 public class GDelete {
 	
 	private JButton okButton; 

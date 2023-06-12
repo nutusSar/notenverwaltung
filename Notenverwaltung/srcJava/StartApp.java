@@ -1,15 +1,16 @@
 import java.awt.EventQueue;
-import java.io.File;
+//import java.io.File;
 
-import javax.swing.JFileChooser;
+//import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import dataclasses.Components;
-import gui.Student;
-import logic.DataMapper;
-import logic.Loader;
+//import gui.Student;
+//import logic.DataMapper;
+//import logic.Loader;
+import logic.Open;
 import maskGen.MaskGenerator;
 
 public class StartApp extends JFrame{
@@ -20,18 +21,7 @@ public class StartApp extends JFrame{
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		JFileChooser fileChooser = new JFileChooser();
-		fileChooser.setCurrentDirectory(new java.io.File("C:\\"));
-		fileChooser.setDialogTitle("Select a directory");
-		fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-
-		int result = fileChooser.showOpenDialog(null);
-		if (result == JFileChooser.APPROVE_OPTION ) {
-		   File selectedFile = fileChooser.getSelectedFile();
-		   DataMapper.setDirectory(selectedFile);
-		   Loader.load(selectedFile);
-		   
-		   
+		if(Open.open()) {		   
 		   MaskGenerator mask = new MaskGenerator(true);
 			components = mask.getComponents();
 			EventQueue.invokeLater(new Runnable() {

@@ -1,11 +1,16 @@
 package dataclasses;
 
+
+/**Model for one student
+ * 
+ * @author nutusSar
+ *
+ */
 public class Student implements Comparable<Student>{
 	private String name;
 	private String id;
 	private String sclass;
 	private double average = -1.0;
-	private boolean abitur;
 	
 	public String getName() {
 		return name;
@@ -31,12 +36,7 @@ public class Student implements Comparable<Student>{
 	public void setAverage(double average) {
 		this.average = average;
 	}
-	public boolean isAbitur() {
-		return abitur;
-	}
-	public void setAbitur(boolean abitur) {
-		this.abitur = abitur;
-	}
+	
 	
 	@Override
 	public int compareTo(Student o) {

@@ -2,6 +2,11 @@ package dataclasses;
 
 import java.util.HashMap;
 
+/**Stores the data model of a whole school
+ * 
+ * @author nutusSar
+ *
+ */
 public class Model {
 	
 	private HashMap<String, SClass> classes = new HashMap<String, SClass>();

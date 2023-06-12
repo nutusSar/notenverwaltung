@@ -1,5 +1,11 @@
 package dataclasses;
 
+
+/**Model for one school grade
+ * 
+ * @author nutusSar
+ *
+ */
 public class Grade {
 	private double grade;
 	private double weight;

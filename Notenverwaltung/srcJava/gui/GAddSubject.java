@@ -12,10 +12,14 @@ import javax.swing.JTextField;
 
 import dataclasses.Components;
 import logic.AddSubject;
-import logic.CreateStudent;
-import logic.CreateSubject;
 import logic.EnableDisable;
 
+
+/**GUI to add a subject to a student (module to student)
+ * 
+ * @author nutusSar
+ *
+ */
 public class GAddSubject {
 	
 	private JButton okButton; 

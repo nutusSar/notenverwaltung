@@ -2,10 +2,13 @@ package dataclasses;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 
-
+/**Model for the n to 0-12 relationship between student <> module
+ * 
+ * @author nutusSar
+ *
+ */
 public class StudentSubject {
 	private HashMap<String, ArrayList<Subject>> student2Subjects = new HashMap<String, ArrayList<Subject>>();
 	private HashMap<String, ArrayList<Student>> subject2Students = new HashMap<String, ArrayList<Student>>();

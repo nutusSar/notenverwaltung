@@ -1,11 +1,15 @@
 package logic;
 
-import java.util.Arrays;
 
 import javax.swing.JTextField;
 
 import dataclasses.Components;
-
+/**GUI Logic 
+ * 
+ * @author nutusSar
+ *
+ *Maps GUI action search object(s) to the model search object(s) object and vice versa 
+ */
 public class SearchField {
 
 	public static void clickOk(Components components, String input, boolean reset) {

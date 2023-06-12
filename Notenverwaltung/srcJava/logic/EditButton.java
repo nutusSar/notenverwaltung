@@ -1,6 +1,13 @@
 package logic;
 import dataclasses.Components;
 
+
+/**GUI Logic 
+ * 
+ * @author nutusSar
+ *
+ *Maps GUI action edit entry to the model action edit object and vice versa 
+ */
 public class EditButton {
 	
 	

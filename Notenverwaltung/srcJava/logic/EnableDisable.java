@@ -4,6 +4,11 @@ import javax.swing.JButton;
 
 import dataclasses.Components;
 
+/**Enable, disable all buttons 
+ * 
+ * @author nutusSar
+ *
+ */
 public class EnableDisable {
 
 	public static void enable(Components components) {

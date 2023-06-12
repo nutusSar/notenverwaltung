@@ -4,6 +4,12 @@ package logic;
 import dataclasses.Components;
 import gui.GDelete;
 
+/**GUI Logic 
+ * 
+ * @author nutusSar
+ *
+ *Maps GUI action delete entry to the model action delete object and vice versa 
+ */
 public class DeleteButton {	
 
 	
@@ -37,11 +43,11 @@ public class DeleteButton {
 			if (components.getHiddenTextfields().get("10").getText().isEmpty() &&  components.getHiddenTextfields().get(cell).getText().matches("([Ss])([Uu])(.*)")) {
 				DataMapper.deleteModule(components.getHiddenTextfields().get(cell).getText());
 			}
+			DataMapper.initAverage();
 			components.getVisibleTextfields().get(cell).setText("");
 			components.getVisibleTextfields().get("0" + y).setText("");
 			components.getVisibleTextfields().get("2" + y).setText("");
 			components.getHiddenTextfields().get(cell).setText("");
-			//Deleting of actual Object is missing 
 			return(true);
 		}
 		return(false);

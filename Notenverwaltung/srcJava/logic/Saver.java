@@ -11,10 +11,19 @@ import dataclasses.SClass;
 import dataclasses.Student;
 import dataclasses.Subject;
 
+/**Saves the entire model to the memory by overwriting if an old model already exits or by creating a new one
+ * 
+ * @author nutusSar
+ *
+ */
 public class Saver {
 
 	private static Model model;
 	
+	/** starts the saving process
+	 * 
+	 * @return true if saving was successful
+	 */
 	public static boolean save() {
 		model = DataMapper.getModel();
 		File selectedDirectory = DataMapper.getDirectory();
@@ -68,6 +77,11 @@ public class Saver {
 	    directory.delete();
 	}
 	
+	/** saves all students
+	 * 
+	 * @param classDir dir of the students class
+	 * @param student to save
+	 */
 	public static void saveStudent(File classDir, Student student) {
 		File studentFile = new File(classDir, "/" + student.getName() + ".txt");
 		try (FileWriter fileWriter = new FileWriter(studentFile, false)) {
@@ -88,10 +102,14 @@ public class Saver {
 			}
 		    fileWriter.write(content);
 		} catch (IOException e) {
-		    // handle any IOExceptions here
 		}
 	}
 	
+	/**saves all modules
+	 * 
+	 * @param modulesDirectory path of the dir
+	 * @param module to save
+	 */
 	public static void saveModule(File modulesDirectory, Subject module) {
 		File moduleDir = new File(modulesDirectory, "/" + module.getName());
 		if (!moduleDir.exists()) {

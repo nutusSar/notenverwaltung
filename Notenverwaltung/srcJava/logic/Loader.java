@@ -14,6 +14,13 @@ import dataclasses.SClass;
 import dataclasses.Student;
 import dataclasses.Subject;
 
+/**loads an entire new model from memory and passes it into the DataMapper
+ * 
+ * advantage after init load no connection between model and memory
+ * 
+ * @author nutusSar
+ *
+ */
 public class Loader {
 	
 	private static Model model = new Model();
@@ -24,14 +31,16 @@ public class Loader {
 	public static boolean load(File selectedDirectory) {
 		File classesDirectory = new File(selectedDirectory, "/Classes");
 		File modulesDirectory = new File(selectedDirectory, "/Modules");
-				
+		
+		//resetting
+		model = new Model();
+		classes = new ArrayList<File>();
+		modules = new ArrayList<File>();
 		//gets all classes
 		if (classesDirectory.exists()) {
 			Collections.addAll(classes, classesDirectory.listFiles());
 		}
 		else {
-			//TODO Error GUI
-			System.out.println("TODO Error GUI");
 			return(false);
 		}
 		
@@ -40,8 +49,6 @@ public class Loader {
 			Collections.addAll(modules, modulesDirectory.listFiles());
 		}
 		else {
-			//TODO Error GUI
-			System.out.println("TODO Error GUI");
 			return(false);
 		}
 		
@@ -119,10 +126,8 @@ public class Loader {
 			}	
 		}
 		catch (FileNotFoundException e) {
-			// handle FileNotFoundExceptions here
 		} 
 		catch (IOException e) {
-			// handle any other IOExceptions here
 		}
 		finally {
 			if (fileReader != null) {
@@ -130,7 +135,6 @@ public class Loader {
 					fileReader.close();
 				} 
 				catch (IOException e) {
-	            // Handle any IOExceptions here
 				}
 			}
 		}

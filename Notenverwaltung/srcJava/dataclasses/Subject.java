@@ -1,5 +1,10 @@
 package dataclasses;
 
+/**Model for one school module
+ * 
+ * @author nutusSar
+ *
+ */
 public class Subject implements Comparable<Subject>{
 	private String name;
 	private String id;

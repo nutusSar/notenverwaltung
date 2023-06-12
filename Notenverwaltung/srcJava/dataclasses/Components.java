@@ -8,6 +8,12 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+
+/**all components that the maskGenerator generated will be stored here for later manipulation 
+ * 
+ * @author nutusSar
+ *
+ */
 public class Components {
 	private JPanel contentPane;
 	private HashMap<String, JTextField> visibleTextfields = new HashMap<>();

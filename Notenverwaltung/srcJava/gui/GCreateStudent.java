@@ -14,6 +14,11 @@ import dataclasses.Components;
 import logic.CreateStudent;
 import logic.EnableDisable;
 
+/**GUI to create a student and add a school class
+ * 
+ * @author nutusSar
+ *
+ */
 public class GCreateStudent {
 	
 	private JButton okButton; 

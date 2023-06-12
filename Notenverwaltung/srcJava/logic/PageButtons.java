@@ -2,6 +2,12 @@ package logic;
 
 import dataclasses.Components;
 
+/**GUI Logic 
+ * 
+ * @author nutusSar
+ *
+ *Maps GUI action page navigation to the model action page navigation and vice versa 
+ */
 public class PageButtons {
 
 	public static void previous(Components components) {

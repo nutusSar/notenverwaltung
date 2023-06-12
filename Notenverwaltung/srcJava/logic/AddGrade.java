@@ -2,8 +2,13 @@ package logic;
 
 import dataclasses.Components;
 import gui.GAddGrade;
-import gui.GAddSubject;
 
+/**GUI Logic 
+ * 
+ * @author nutusSar
+ *
+ *Maps GUI action add grade to the model action add Grade and vice versa 
+ */
 public class AddGrade {
 
 	public static void clickEdit(Components components, String cell, String id) {

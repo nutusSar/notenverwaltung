@@ -12,10 +12,13 @@ import javax.swing.JTextField;
 
 import dataclasses.Components;
 import logic.AddGrade;
-import logic.CreateStudent;
 import logic.EnableDisable;
-import logic.SearchField;
 
+/**GUI to add a grade
+ * 
+ * @author nutusSar
+ *
+ */
 public class GAddGrade {
 	
 	private JButton okButton; 

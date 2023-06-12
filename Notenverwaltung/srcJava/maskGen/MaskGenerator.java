@@ -9,7 +9,6 @@ import java.util.HashMap;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -19,15 +18,23 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import dataclasses.Components;
+import gui.GHelp;
 import logic.CreateClass;
 import logic.CreateStudent;
 import logic.CreateSubject;
 import logic.DeleteButton;
 import logic.EditButton;
+import logic.Open;
 import logic.PageButtons;
 import logic.Saver;
 import logic.SearchField;
 
+/**Generates a manipulative GUI mask
+ * advantage: the entire main GUI is only loaded once
+ * 
+ * @author nutusSar
+ *
+ */
 public class MaskGenerator {
 	private Components components;
 	private JPanel contentPane;
@@ -186,7 +193,6 @@ public class MaskGenerator {
 		menuBar = new JMenuBar();
 		// Create some menus and menu items
 		JMenu fileMenu = new JMenu("File");
-	    JMenuItem newMenuItem = new JMenuItem("New");
 	    JMenuItem openMenuItem = new JMenuItem("Open");
 	    JMenuItem saveMenuItem = new JMenuItem("Save");
 	    saveMenuItem.addActionListener(new ActionListener() {
@@ -195,7 +201,12 @@ public class MaskGenerator {
 				Saver.save();
 			}
 		});
-	    fileMenu.add(newMenuItem);
+	    openMenuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Open.open();
+			}
+		});
         fileMenu.add(openMenuItem);
         fileMenu.add(saveMenuItem);
         
@@ -228,6 +239,18 @@ public class MaskGenerator {
         create.add(SubjectMenuItem);
 	    
         menuBar.add(create);
+        
+        JMenu help = new JMenu("Help");
+	    JMenuItem searchCommandsMenuItem = new JMenuItem("Search Commands");
+	    searchCommandsMenuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new GHelp();
+			}
+		});
+	    help.add(searchCommandsMenuItem);
+	    
+	    menuBar.add(help);
         
         //Putting all information into a DTO
 		components = new Components(contentPane, visibleTextfields, rowButtons, hiddenTextfields, searchField, this.pageButtons, buttons, menuBar, okButton);

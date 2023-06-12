@@ -3,6 +3,12 @@ package logic;
 import dataclasses.Components;
 import gui.GCreateClass;
 
+/**GUI Logic
+ * 
+ * @author nutusSar
+ *
+ *Maps GUI action create class to the model action create class and vice versa
+ */
 public class CreateClass {
 
 	public static void clickCreate(Components components) {

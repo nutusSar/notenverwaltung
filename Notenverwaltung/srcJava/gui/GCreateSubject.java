@@ -14,6 +14,11 @@ import dataclasses.Components;
 import logic.CreateSubject;
 import logic.EnableDisable;
 
+/**GUI to create a module ("subject") (called module->for the whole school, called subject-> for one student)
+ * 
+ * @author nutusSar
+ *
+ */
 public class GCreateSubject {
 	
 	private JButton okButton; 

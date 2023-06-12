@@ -3,6 +3,12 @@ package logic;
 import dataclasses.Components;
 import gui.GAddSubject;
 
+/**GUI Logic
+ * 
+ * @author nutusSar
+ *
+ *Maps GUI action add subject to the model action add subject and vice versa
+ */
 public class AddSubject {
 	
 	public static void clickEdit(Components components, String cell, String id) {
