@@ -1,15 +1,9 @@
 import java.awt.EventQueue;
-//import java.io.File;
-
-//import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import dataclasses.Components;
-//import gui.Student;
-//import logic.DataMapper;
-//import logic.Loader;
 import logic.Open;
 import maskGen.MaskGenerator;
 
